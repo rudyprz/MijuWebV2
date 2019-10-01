@@ -1,0 +1,88 @@
+extends ../layouts/layout
+
+mixin pic(img,id)
+  -var url=img.url()
+  .col.s12.m10.l6.offset-m1(id= url)
+    img.center(src=url)
+    p.blueP
+      | Compartir
+      tab2
+      a(href='http://instagram.com' target='_blank')
+        i.fab.fa-instagram.fa-cog
+      tab1
+      -var link='http://www.facebook.com/sharer.php?u=' + url
+      a(href=link target='_blank')
+        i.fab.fa-facebook.fa-cog
+      form#delete(action='/delete' method='post' value=id)
+        button#idb.blueP(onclick='myFunction("'+ id +'")', value=id)
+          i.fas.fa-times.fa-cog
+          | borrar recuerdo
+
+block content
+  include ../partials/navbar
+  include ../partials/nav
+  #wrapper
+    #backToTop.fixed-action-btn
+      a.btn-floating.btn-large
+        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
+    #photos
+      .row.center
+        h2 ¡Buen día #{name}!
+        span.error #{error}
+        .col.right
+          a.waves-effect.waves-light.btn(href='/registrar-familiar') REGISTRAR FAMILIAR
+      .row
+        each photo in photos
+          if photo.id
+            -var idx = photo.id
+          else 
+            -var idx = "Error al obtener el ID"
+          if photo.get("image1")
+            -var img = photo.get("image1")
+          else 
+            -var img = "Aún no tienes fotos asociadas"
+          +pic(img,idx)
+      .row
+        .col.s12.m10.l6.offset-m1.offset-l3
+          .card.blue.p-1.rounded-card
+            .card-content.white-text
+              img.center(src='img/tiotemo-red-card@2x.png' alt='Tio Temo')
+              p.content.center Comparte las fotos que te hemos tomado
+              br
+              p.cv Selecciona tu red social
+               br
+               br
+               a(href='http://fb.com')
+                  i.fab.fa-facebook.fa-cog1.fa-3x
+               tab4
+               a(href='http://instagram.com')
+                  i.fab.fa-instagram.fa-cog1.fa-3x
+            .card-action.center
+              a.waves-effect.waves-light.btn.rounded-button(href='http://fb.com') COMPARTIR
+
+block additional_scripts
+  script(type='text/javascript').
+
+    function myFunction(idform){
+      var id = idform;
+      if(id ==  ""){
+        toastr.warning('Error al eliminar el recuerdo.');
+      }else{
+        var form_data = new FormData();
+        form_data.append("id", id);
+        var request = $.ajax({
+          url: "/delete",
+          method: "POST",
+          data: {
+            "id": id},
+          success:function(response){
+            toastr.success("Registro eliminado correctamente.");
+            window.location.href = "/ver-mis-recuerdos";
+          },
+          error:function(response){
+            toastr.error("Hubo un error al eliminar tu registro, intenta nuevamente.");
+            window.location.href = "/ver-mis-recuerdos";
+          }
+        });
+      }
+    }

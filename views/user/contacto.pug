@@ -1,0 +1,67 @@
+extends ../layouts/layout
+
+block content
+  .navbar-fixed
+    nav.z-depth-0(style="background-color:transparent")
+      #navbar(style="background-color:#FF5647")
+        .row.padding-top-20.padding-left-20
+          .col
+            a(href='logoutUsr')
+              img.title(src="img/Grupo1.svg" alt="Museo MIJU")
+          .col.right
+            a#nav-trigger
+              img(src="img/menu.svg")
+  include ../partials/nav
+
+  #wrapper(style="padding-top:40px")
+    #backToTop.fixed-action-btn
+      a.btn-floating.btn-large
+        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
+    #contacto
+      .row.no-padding
+        .col.s12.m12.l12.no-padding
+          .card.redP.center.z-depth-0
+            img(src="img/Grupo422.png" alt="Tio Temo Plastilina")
+      .row
+        .col.s10.m8.l8.offset-m2.offset-l2.offset-s1
+          img.pd(src="img/Grupo380.svg" alt="Mi Contacto")
+          p.ti Escríbenos, ¡Queremos saber de ti!
+          form#mail(method="post" action="/sendQuote")
+            .row
+              .input-field
+                input#quoteName.validate(type='text' name='quoteName' required)
+                label(for='quoteName') Nombre*
+            .row
+              .input-field
+                input#quoteLName.validate(type='text' name='quoteLName' required)
+                label(for='quoteLName') Apellido(s)*
+            .row
+              .input-field
+                input#quoteMail.validate(type='email' name ='quoteMail' required)
+                label(for='quoteMail') Correo electrónico*
+            .row
+              .input-field
+                input#quotePhone.validate(type='number' name='quotePhone')
+                label(for='quotePhone') Teléfono (opcional)
+            .row
+              .input-field
+                textarea#quoteComments.materialize-textarea(name='quoteComments')
+                label(for='textarea1') Comentarios (0/1000)
+            .row.center
+              button.btn-large.waves-effect.waves-light.rounded-button(type='submit') ENVIAR
+          .row
+            p.sm
+              | Dirección: (Apertura del museo, finales de 2019) 
+              br
+              |  Plaza Fiesta San Agustín, acceso por dentro de la plaza a un lado de Soriana.
+              br
+              |  Ave. Real San Agustín 222, San Pedro Garza García, N.L.
+          .row.center
+            .embed-container
+              iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.671434439282!2d-100.33874658523936!3d25.649028183688095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662be1286402fb5%3A0x2d1e883639f5b141!2sPlaza+Fiesta+San+Agustin!5e0!3m2!1ses!2smx!4v1564417646403!5m2!1ses!2smx' width='495' height='350' frameborder='0' style='border:0' allowfullscreen='')
+          .row.center
+            img(src="img/Grupo384.svg" alt="Logo MIJU")
+            br
+            hr
+            img(src="img/trompo.png" alt="Trompo")
+            p.smit Desarrollado con ❤ por Brounie

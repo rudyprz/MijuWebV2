@@ -1,0 +1,68 @@
+extends ../layouts/layout
+
+block content
+  include ../partials/navbar
+  include ../partials/nav
+
+  #wrapper
+    #backToTop.fixed-action-btn
+      a.btn-floating.btn-large
+        i.large.material-icons keyboard_arrow_up
+    #login
+      .row
+        .col.s12.m8.l8.offset-l2.offset-m2.center
+          p.center.cv ¡Hola Administrador!
+          img.center(src="img/Grupo332.svg" alt="Logo Tio Temo")
+          br
+          hr
+          br
+          p.bd Inciar sesión
+          .row
+            form#login.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action="/loginAdmin" method="post")
+              span.error #{error}
+              .row
+                .input-field
+                  input#usuario.validate(type='text' name='username' required)
+                  label(for='usuario') Usuario
+              .row
+                .input-field
+                  input#password.validate(type='password' name='password' required)
+                  label(for='password') Contraseña
+              br
+              button.btn-large.waves-effect.waves-light.rounded-button(type='submit' name='action')
+                | INICIA SESIÓN
+
+block additional_scripts
+  script(type='text/javascript').
+  
+    $("#login").submit(function(e){
+      e.preventDefault();
+      var user = $('#usuario').val();
+      var pass = $('#password').val();
+      if(user ==  "" || pass == ""){
+         toastr.warning('Favor de completar todos los campos.');
+      }else{
+         var form_data = new FormData();
+         form_data.append("user", user);
+         form_data.append("pass", pass);
+         var request = $.ajax({
+           url: "/loginAdmin",
+           method: "POST",
+           data: {
+             "username": user,
+             "password": pass},
+           success:function(response){ 
+             if(response.type == "admin"){
+               toastr.success("Entrando al sistema.");
+               window.location.href = "/tabla-usuarios";
+             }else{
+              toastr.error("Usuario o contraseña incorrecto.");
+             }
+           },
+           error:function(response){
+             console.log(user);
+             console.log(pass);
+           }
+         });
+      }
+    });

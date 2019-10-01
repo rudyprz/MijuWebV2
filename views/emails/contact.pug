@@ -1,0 +1,37 @@
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Museo MIJU
+    link(href='/css/aux.css' rel='stylesheet')
+  #content.main-content(style='width:70%;margin:auto')
+    table(align='center' border='0' cellpadding='0' cellspacing='0' width='600')
+      tbody
+        tr
+          td(align='center' bgcolor='#FFB52E' style='padding: 40px 0 30px 0;')
+            img(src='https://museomiju.com/img/Grupo1@2x.png' alt='Creating Email Magic' style='display: block; witdth:100%')
+        tr
+          td(align='center' bgcolor='#fff')
+            table(align='center' border='0' cellpadding='0' cellspacing='0' width='600')
+              tbody
+                tr(style='padding:10px')
+                  td(align='center' bgcolor='#f8f8f8' style='padding: 40px 0 30px 0;' colspan='2') ¡Tenemos un nuevo prospecto!
+                tr(style='padding:10px')
+                  td(style='width:40%;padding:10px;text-align:right') Nombre:
+                  td(style='width:60%;padding:10px')
+                    b ${name} ${lastname}
+                tr(style='padding:10px')
+                  td(style='width:40%;padding:10px;text-align:right') Correo:
+                  td(style='width:60%;padding:10px')
+                    b ${mailAddress}
+                tr(style='padding:10px')
+                  td(style='width:40%;padding:10px;text-align:right') Teléfono:
+                  td(style='width:60%;padding:10px')
+                    b ${phone}
+                tr(style='padding:10px')
+                  td(style='width:40%;padding:10px;text-align:right') Comentarios:
+                  td(style='width:60%;padding:10px')
+                    b ${comments}
+        tr
+          td(align='center' bgcolor='#00a65f' style='padding: 20px 0; color:white')
+            p Museo Interactivo del Juguete

@@ -1,0 +1,110 @@
+extends ../layouts/layout
+
+block content
+  include ../partials/navbar
+  include ../partials/nav
+  #wrapper
+    #backToTop.fixed-action-btn
+      a.btn-floating.btn-large
+        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
+    #regFam
+      .row
+        .col.s12.m8.l8.offset-l2.offset-m2.center
+          .row
+            form#regFam.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action='/relatives' method='post')
+              span.success #{msg}
+              p.bd Registro de un familiar 
+              br
+              .row
+                .input-field
+                  input#username.validate(type='email' value=mail disabled)
+                  label(for='username') Tu Usuario
+              .row
+                .input-field
+                  input#name.validate(type='text' required)
+                  label(for='name') ¿Cuál es su nombre?*
+              .row
+                  input#fecha.datepicker(type='text' required)
+                  label(for='fecha') Fecha de nacimiento*
+              .row
+                .input-field
+                  select#parentesco
+                    option(value='' disabled='' selected='' required) Parentesco*
+                    option(value='Esposo') Esposo(a)
+                    option(value='Hijo') Hijo(a)
+                    option(value='Nieto') Nieto(a)
+                    option(value='Sobrino') Sobrino(a)
+                    option(value='Hermano') Hermano(a)
+                    option(value='Primo') Primo(a)
+                    option(value='Cuñado') Cuñado(a)
+                    option(value='Suegro') Suegro(a)
+                    option(value='Padre') Padre
+                    option(value='Madre') Madre
+                    option(value='Abuelo') Abuelo(a)
+                    option(value='Tío') Tío(a)
+                    option(value='Otro') Otro
+              .row
+                .input-field
+                  select#sex
+                    option(value='' disabled='' selected='' required) ¿Cuál es su género?*
+                    option(value='Masculino') Masculino
+                    option(value='Femenino') Femenino
+                    option(value='Otro') Otro
+              .row
+                .input-field
+                  input#mail.validate(type='email' required)
+                  label(for='mail') ¿Cuál es su correo electrónico?
+              p
+                label
+                  input.filled-in(type='checkbox' checked='checked')
+                  span.cv2
+                    u Acepto el aviso de privacidad
+                br
+                label
+                  input.filled-in(type='checkbox' checked='checked')
+                  span.cv2 Estoy de acuerdo en recibir avisos y promociones de MIJU
+              button.btn-large.waves-effect.waves-light.rounded-button.gr(type='submit')
+                | INSCRÍBELO
+
+block additional_scripts
+  script(type='text/javascript').
+  
+    $("#regFam").submit(function(e){
+      e.preventDefault();
+      var user = $('#username').val();//Usuario que lo registra
+      var mail = $('#mail').val();
+      var name = $('#name').val();
+      var fecha = $('#fecha').val();
+      var gender = $('#sex').val();
+      var parentesco = $('#parentesco').val();
+      if(user ==  "" || gender == "" || name == "" || parentesco == ""){
+        toastr.warning('Favor de completar todos los campos.');
+      }else{
+         var form_data = new FormData();
+         form_data.append("user", user);
+         form_data.append("mail", mail);
+         form_data.append("name", name);
+         form_data.append("fecha", fecha);
+         form_data.append("gender", gender);
+         form_data.append("parentesco", parentesco);
+         var request = $.ajax({
+           url: "/relatives",
+           method: "POST",
+           data: {
+             "gender": gender,
+             "name": name,
+             "relative": user,
+             "birthdate": fecha,
+             "relation": parentesco,
+             "mail": mail},
+           success:function(response){
+            toastr.success("Has inscrito correctamente a tu pariente.");
+            window.location.href = "/registrar-familiar";
+           },
+           error:function(response){
+             toastr.error("Hubo un error en la inscripción, intenta nuevamente.");
+             window.location.href = "/registrar-familiar";
+           }
+         });
+      }
+    });

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "calcium-vial-253515",
+  "private_key_id": "f9e7b6e1fc281e66561cf74038ed21820ffd063d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDsq5FP4YEFHVB/\ny9p6JRY+wxCjdZhWhCGljBcl4hEkE0Q0V0OKWsnC46aICXcxNMAjpXUbyFOHh39A\n4qk4zKBb7m4Uaw81wLsIiyZhgduBwKUpkVsjO97VS0pNrBL0GwnWj3mDCB7gujw1\n4QLnEush7wK/X249neR1o7j/8Cf0HCUw0u+uf2IBsQMeWvCM4Xx9njbpafVLgK4v\nrDZmM2AhsKUG/XHSDhKkDDBoxVFk/M0UpmhyKxsUWZMoIem+xCsa6BZcUOMlCwuP\nyI+ebTOmIBxxSKjI80J842gaT+6odJYt/n2RWWBnC9iH7Y67IzEVjhiltrmj2lXJ\ndvmTu2AdAgMBAAECggEAFllx/Kikw0O26ofo0aMMnDsAfbx+TnaQ1NjLW3pN4xRn\nWvKoqqPoggfMc0lC4Q8vBnllUI0qMitoqCB0xCvdXYEWZ8WKZ1Q+yqTqqBztX9iT\niumH6+ZcpH4afgY+DfY7B3DUvpEhlVg7lQede2PCd5m3WTTHrM2VxEmEkArGQxty\nJOXqeXNk2frpn0lEtsQvlcisKF8xlqtnrgsYTpyfCltE96rzk6wJ3qXX/zL47fve\ntHY8e8gahDWIacS+1H+fEbV2jmz4skITFfCfgUPVieRLl7qRJ/MuqLVpq5WZlRMb\nbf1oEcs+vUqRN6erCync8m+PDOlY+xDcs8d3+hxC8wKBgQD68ZXy5cG2vDIsNbb7\nsTICCoZhkPZXpFh92qpofKU4Ek/fqdS+ZMTZhMfwFlq1HpWd3Uwysf2KV2Cl8a7j\nLOzypZ7W3CPaZ0ac528Mi2vEFU8LUZWzktDz8T2npHlzdk5BKoKycKGP2NAmYyFE\n3TWywVqAkCDgcwdv2DjiZa2cewKBgQDxcFtCCpCOGcaVIWXDs5Ye9W/Rm2gf/EIs\nERTfcUT0g3ZkL85JtseXSAzmLegHuNHO6X4Pzfu8a5eI89vzSl1CrOZY+qfwEkrB\n13gm3qpCuwzVMvDddeCC9ZDm7D2HJKLjZq7lskgYAwcidfJdETCBvjEXkmoxObzP\n5V0fzt7ORwKBgFjoDLsw4Y/PX2tAYKMNpW0Js5CPnmdwp5V3SlaYiqSyADB66A/I\nfeGe5INQODThMBrtE5kGbJB94pUIanC8MvrI6Nyww9cWLfNbH4HvR3ACKK4W6pXj\nlzpGJxTk9c6NhK4b1JBJzUO8igp/poLSaLr7PAg+iBddSa47ifPUGE1PAoGAUuAe\ncyztMdnnMImmROcAQOA+4dRWiaQtkrLKV2iqIsR9fyZpySPUnzk8NEbNvtjSLBQ6\nEXLDVooYGgqbFYgROzHeX+yqeN3Oi3tK4wzLpNxQK16xD1PHHSzt8FZnSFxrDWPR\n5UatOJDRgiK6bvfXjrGaaFz51qvbBAHXVXPNR0ECgYBtbONDk8r0mRY9xPz769Jm\njKd9jrVPh5f0/06xr1Kmt/KVWwinjCKX90RT/fMxhPzFgT7YxV5YrM9FT0rX1Lkv\nFW8dHnh/0HQRyalluyRLD9E6V5RryEjwwnM6gTHIN1nTVn89TSlG/2+jedFplKUj\ntxnGNwc3XHH5B6Wkz4iKUg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "storage@calcium-vial-253515.iam.gserviceaccount.com",
+  "client_id": "108124683718024814503",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/storage%40calcium-vial-253515.iam.gserviceaccount.com"
+}

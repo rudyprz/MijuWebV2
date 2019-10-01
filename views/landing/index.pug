@@ -1,0 +1,195 @@
+extends ../layouts/layout
+
+block content
+  include ../partials/navbar
+  include ../partials/nav
+
+  #wrapper
+    #backToTop.fixed-action-btn
+      a.btn-floating.btn-large
+        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
+    #yellowSection.center
+      .row
+        .col.l7.m6.s12.center
+          img.toy(src="img/Grupo420@2x.png" alt="Juguete")
+        .col.l5.m6.s12.center
+          .row
+            img.title.padding-top-20.padding-right-20.padding-left-20(src="img/Grupo79.svg")
+            img.padding-left-40.small(src='img/Grupo385.svg' alt='Tio Temo')
+        .row.no-margin
+          .col.s8.offset-s2
+            p.white-text.title.no-margin.ital
+              | Desliza hacia abajo para sorprenderte
+              br
+              | ︾
+
+    .parallax-container
+        .parallax
+          img(src='img/parallas.png')
+
+    #whiteSectionA
+      .row
+        .col.s12.m10.l5.offset-l1.offset-m1
+          .card.green.lighten-5.rounded-card
+            .card-content.dark-text
+              img.center(src='img/Grupo385.svg' alt='Tio Temo')
+              span.card-title
+              br
+              br
+              img(src="img/mimuseo.svg" alt="Mi Museo")
+              br
+              p.content
+                | MIJU: Un espacio que busca atraer a tres generaciones: abuelos, padres e hijos;
+                | en una aventura a través de la historia de los juguetes.
+
+        .col.s12.m10.l5.offset-m1
+          .card.blue.darken-3.rounded-card.iris.center
+            .card-content.white-text
+              span.card-title.center Descubre nuestra historia
+              img.center(src="img/Grupo348.svg" alt="Tio Temo Logo")
+            .card-action.transparent.center
+              br
+              br
+              a.waves-effect.waves-light.btn.rounded-button.mh.modal-trigger(href='#modal1') DESCUBRIR
+        #modal1.modal
+          .card.blue.darken-3.rc2
+            .card-content.white-text.no-padding.hg
+              span.card-title.center.it Descubre nuestra historia
+              img.center(src="img/Grupo348.svg" alt="Tio Temo Logo")
+              img.bt(src="img/Grupo424.png" alt="Tio Temo Juguete")
+          .modal-content
+            img.ali(src="img/miorigen.svg" alt="Mi Origen")
+            p.mod
+              | ¡Hola! ¿Qué tal? Quiero darte la bienvenida a MIJU, una aventura espectacular en la historia de los juguetes que ofrece a quien nos visita: grandes momentos de alegría, felicidad y entretenimiento.
+              br
+              br
+              | Mi colección cuenta con más de 5,000 juguetes que provienen de más de 20 países en el mundo, algunos con más de 100 años de haber sido fabricados.
+              br
+              br
+              | Todo comenzó a la edad de 5 años, con el primer juguete oficial de mi colección, un JEEP Militar de fricción el cual puedes ver en la imagen.
+              br
+              br
+              | Más de 68 años después, continúa mi pasión por los juguetes y hoy quiero compartir este gran proyecto, que después de haber sido concebido en mi mente hace más de 25 años, hoy es una realidad.
+              br
+              br
+              | Agradezco a mi familia, a grandes amigos, entre ellos, al Arquitecto Juan Roberto Romero Ramírez y a un grupo de entusiastas inversionistas, liderados por el Ing. Alfonso García Hernández, por creer y apoyar nuestra visión.
+              br
+              br
+              | Estamos convencidos que este museo atrae a tres generaciones, a los niños, a los padres y a los abuelos. Te invito a que nos visites a finales de 2019, trae a tu familia, ven a recordar tu pasado, vivir el presente e imaginar tu futuro en un mundo donde los juguetes forman parte de nuestras vidas.
+              br
+              br
+              | Espero verte pronto.
+              br
+              br
+              | —Tío Temo
+
+    .parallax-container
+        .parallax
+          img(src='img/parallas1.png')
+
+    #greySection
+      .row
+        .col.s12.m10.l5.offset-l1.offset-m1
+          .card.red.accent-2.rounded-card.rc
+            .card-content.white-text
+              span.card-title.center Hola sobrino, inscríbete al club del Tío Temo
+              img.center(src='img/temo.svg' alt='Tio Temo')
+              br
+              p.content.center Recibe avisos y muchas promociones
+            .card-action.center
+              a.waves-effect.waves-light.btn.rounded-button(href='/reg') INSCRÍBEME
+              br
+        .col.s12.m10.l5.offset-m1
+          .card.blue.darken-3.rounded-card.rc
+            .card-content.white-text
+              img.center(src="img/juguete-avion@2x.png" alt="Avión")
+              p.content.center Tus fotos te están esperando
+              p.center.cv
+                | Completa el registro e
+                br
+                |  Ingresa tu código o escanea el QR.
+            .card-action.center
+              a.waves-effect.waves-light.btn.rounded-button(href='/QR') COMPLETAR MI REGISTRO
+
+    .parallax-container
+        .parallax
+          img(src='img/parallas2.png')
+
+    #whiteSectionB
+      .row
+        .col.s12.m10.l5.offset-l1.offset-m1
+          .card.grey.lighten-2.rounded-card.rc1
+            .card-content.dark-text
+              span.card-title.center Inscríbete al
+              img.center(src='img/Grupo384.svg' alt='Logo MIJU')
+              p.content.center Recibe avisos y promociones
+                |
+                br
+                | de MIJU en tu correo.
+              .row
+                form#newsletter.col.s12(action='/news' method='post')
+                  .row
+                    .input-field.col.s10.m10.l10.offset-s1.offset-m1.offset-l1.center
+                      input#correo.validate(type='email' required name="email")
+                      label(for='correo') Tu email para unirte
+                      br
+                      br
+                      button.btn-large.waves-effect.waves-light.rounded-button(type='submit' name='action')
+                        | INSCRÍBEME
+                        br
+                        br
+                        p.center.cv
+                          | Si no te agrada lo que recibes de MIJU podrás
+                          br
+                          | eliminar tu registro en cualquier momento
+        .col.s12.m10.l5.pd.offset-m1
+          p.center
+            | Dirección: (Apertura del museo, finales de 2019)
+            br
+            |  Plaza Fiesta San Agustín
+            br
+            |  Acceso por dentro de la plaza a un lado de Soriana
+            br
+            |  Ave. Real San Agustín 222
+            br
+            | San Pedro Garza García, N.L.
+          img.center(src="img/Grupo384.svg" alt="Logo MIJU")
+          br
+          hr
+          img.center2(src="img/trompo.png" alt="Trompo")
+          p.center.cv2 Desarrollado con ❤ por Brounie
+
+    .row
+      .col.s12.center
+        a(href="https://www.facebook.com/MuseoMIJU" target="_blank")
+          img(src="/img/facebook.png", alt="Facebook" style="margin-right:5px")
+        a(href="https://www.instagram.com/museomiju" target="_blank")
+          img(src="/img/instagram.png", alt="Instagram")
+
+block additional_scripts
+  script(type='text/javascript').
+
+    $("#newsletter").submit(function(e){
+      e.preventDefault();
+      var mail = $('#correo').val();
+      if(mail ==  ""){
+        toastr.warning('Favor de ingresar tu correo.');
+      }else{
+        var form_data = new FormData();
+        form_data.append("mail", mail);
+        var request = $.ajax({
+          url: "/news",
+          method: "POST",
+          data: {
+            "email": mail},
+          success:function(response){
+          toastr.success("Te has inscrito correctamente.");
+          window.location.href = "/";
+          },
+          error:function(response){
+            toastr.error("Hubo un error en tu inscripción, intenta nuevamente.");
+            window.location.href = "/";
+          }
+        });
+      }
+    });

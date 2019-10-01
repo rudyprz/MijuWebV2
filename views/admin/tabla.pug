@@ -1,0 +1,204 @@
+extends ../layouts/layout
+
+mixin contact(nombre, correo, tel, sexo, fecha)
+  tr
+    td= nombre
+    td= correo
+    td= tel
+    td= sexo
+    td= fecha
+
+mixin contactNR(correo)
+  tr
+    td= correo
+
+mixin contactNS(correoE)
+  tr
+    td= correoE
+
+mixin familiares(gender, name, relation, birthdate, mail, relative)
+  tr 
+    td= relative
+    td= name
+    td= gender
+    td= relation
+    td= birthdate
+    td= mail   
+
+
+block content
+  include ../partials/navbarAdmin
+
+  #wrapper
+    #backToTop.fixed-action-btn
+      a.btn-floating.btn-large
+        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
+    #table
+      #test1
+        .row
+          .col.s10.m10.l10.offset-s1.offset-m1.offset-l1
+            h4.center Usuarios registrados
+            table#registred.striped
+              thead
+                tr
+                  th Nombre
+                  th Correo electrónico
+                  th Teléfono
+                  th Género
+                  th Cumpleaños
+              tbody
+                each prospect in prospects
+                  //-Validates values exist in the object
+                  if prospect.get("name")
+                    -var name = prospect.get("name")
+                  else
+                    //- Validate name
+                    -var name = "Nombre no definido"
+                  if prospect.get("mail")
+                    -var mail = prospect.get("mail")
+                  else
+                    //- Validate phone
+                    -var mail = "Correo no definido"
+                  if prospect.get("phone")
+                    -var phone = prospect.get("phone")
+                  else
+                    //- Validate gender
+                    -var phone = "Teléfono no definido"
+                  if prospect.get("gender")
+                    -var sexo = prospect.get("gender")
+                  else
+                    //- Validate sex
+                    -var sexo = "Sexo no definido"
+                  if prospect.get("birthdate")
+                    -var fecha = prospect.get("birthdate")
+                  else
+                    //- Validate birthdate
+                    -var fecha = "Cumpleaños no definido"
+                  +contact(name, mail, phone, sexo, fecha)
+        .row.center
+          button.waves-effect.waves-light.btn(onclick="exportTableToExcel('registred')") Exportar Tabla a Excel
+
+      #test2
+        .row
+          .col.s10.m10.l10.offset-s1.offset-m1.offset-l1
+            h4.center Usuarios sin registro completo
+            table#registredNO.striped
+              thead
+                tr
+                  th Correo electrónico
+              tbody
+                each prospect in prospectsNR
+                  if prospect.get("email")
+                    -var mail = prospect.get("email")
+                  else
+                    //- Validate mail
+                    -var mail = "Correo no definido"
+                  +contactNR(mail)
+
+        .row.center
+          button.waves-effect.waves-light.btn(onclick="exportTableToExcel('registredNO')") Exportar Tabla a Excel
+
+      #test3
+        .row
+          .col.s10.m10.l10.offset-s1.offset-m1.offset-l1
+            h4.center Usuarios en newsletter
+            table#registredNS.striped
+              thead
+                tr
+                  th Correo electrónico
+              tbody
+                each prospect in prospectsNS
+                  //-Validates values exist in the object
+                  if prospect.get("email")
+                    -var correoE = prospect.get("email")
+                  else
+                    //- Validate name
+                    -var correoE = "Error al obtener el correo"
+                  +contactNS(correoE)
+
+        .row.center
+          button.waves-effect.waves-light.btn(onclick="exportTableToExcel('registredNS')") Exportar Tabla a Excel                        
+
+      #test4
+        .row
+          .col.s10.m10.l10.offset-s1.offset-m1.offset-l1
+            h4.center Familiares registrados
+            table#registredFam.striped
+              thead
+                tr
+                  th Registrante
+                  th Nombre
+                  th Género
+                  th Relación
+                  th Cumpleaños
+                  th Correo electrónico
+              tbody
+                each fam in familia
+                  if fam.get("gender")
+                      -var genero = fam.get("gender")
+                  else
+                    //- Validate gender
+                    -var genero = "Género no definido"
+                  if fam.get("name")
+                      -var nombre = fam.get("name")
+                  else
+                    //- Validate name
+                    -var nombre = "Nombre no definido"
+                  if fam.get("relation")
+                      -var relacion = fam.get("relation")
+                  else
+                    //- Validate relation
+                    -var relacion = "Relación no definida"
+                  if fam.get("birthdate")
+                      -var cumple = fam.get("birthdate")
+                  else
+                    //- Validate birthdate
+                    -var cumple = "Cumpleaños no definido"
+                  if fam.get("mail")
+                      -var mail = fam.get("mail")
+                  else
+                    //- Validate mail
+                    -var mail = "Correo no definido"
+                  if fam.get("relative")
+                      -var registrante = fam.get("relative")
+                  else
+                    //- Validate register
+                    -var registrante = "Error al obtener el registrante"
+                  +familiares(genero, nombre, relacion, cumple, mail, registrante)
+
+        .row.center
+          button.waves-effect.waves-light.btn(onclick="exportTableToExcel('registredFam')") Exportar Tabla a Excel
+              
+
+block additional_scripts
+  script(type='text/javascript').
+    function exportTableToExcel(tableID, filename = ''){
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+        
+        // Specify file name
+        filename = filename?filename+'.xls':'excel_data.xls';
+        
+        // Create download link element
+        downloadLink = document.createElement("a");
+        
+        document.body.appendChild(downloadLink);
+        
+        if(navigator.msSaveOrOpenBlob){
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob( blob, filename);
+        }else{
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+        
+            // Setting the file name
+            downloadLink.download = filename;
+            
+            //triggering the function
+            downloadLink.click();
+        }
+    }

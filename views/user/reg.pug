@@ -1,0 +1,171 @@
+extends ../layouts/layout
+
+block content
+  include ../partials/navbar
+  include ../partials/nav
+  #wrapper
+    #backToTop.fixed-action-btn
+      a.btn-floating.btn-large
+        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
+    #reg
+      .row
+        .col.s12.m8.l8.offset-l2.offset-m2.center
+          br
+          br
+          img.center2(src="img/Grupo332.svg" alt="Logo Tio Temo")
+          br
+          hr
+          p.cv(style="font-size:25px") Regístrate para poder bajar y compartir tus fotos con los Transformers
+          .row
+            form#sign.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action="/reg" method="post")
+              p.bd Registro
+              .row
+                .input-field
+                  input#name.validate(type='text' required)
+                  label(for='name') ¿Cuál es tu nombre?*
+              .row
+                .input-field
+                  if mail
+                    input#username.validate(type='email' value=mail required)
+                  else 
+                    input#username.validate(type='email' required)
+                  label(for='username') ¿Cuál es tu correo electrónico?*
+              .row
+                .input-field
+                  input#fecha(type='text' placeholder="dd/mm/aaaa")
+                  label(for='fecha') Fecha de nacimiento
+              .row
+                .input-field
+                  input#phone.validate(type='text')
+                  label(for='phone') ¿Cual es tu teléfono?
+              .row
+                .input-field
+                  input#pass.validate(type='password' required)
+                  label(for='pass') Contraseña*
+              .row
+                .input-field
+                  select#sex
+                    option(value='' disabled='' selected='') ¿Cuál es tu género?
+                    option(value='Masculino') Masculino
+                    option(value='Femenino') Femenino
+                    option(value='Otro') Otro
+              p
+                label
+                  input.filled-in(type='checkbox' checked='checked')
+                  span.cv2
+                    u Acepto el aviso de privacidad
+                br
+                label
+                  input.filled-in(type='checkbox' checked='checked')
+                  span.cv2 Estoy de acuerdo en recibir avisos y promociones de MIJU
+              p.cv2
+                u
+                  | Más adelante podrás agregar a los miembros de tu familia en tu perfil
+              button.btn-large.waves-effect.waves-light.rounded-button.gr(type='submit' name='action')
+                | INSCRÍBEME
+block additional_scripts
+  script(type='text/javascript').
+  
+    $("#sign").submit(function(e){
+      e.preventDefault();
+      loadingToast("Guardando información");
+      var user = $('#username').val();
+      var pass = $('#pass').val();
+      var mail = $('#username').val();
+      var name = $('#name').val();
+      var fecha = $('#fecha').val();
+      var gender = $('#sex').val();
+      var phone = $('#phone').val();
+      if(user ==  "" || pass == "" || mail == ""){
+        toastr.warning('Favor de completar todos los campos.');
+      }else{
+        
+         var request = $.ajax({
+           url: "/reg",
+           method: "POST",
+           data: {
+             "username": user,
+             "password": pass,
+             "email": mail,
+             "mail": mail,
+             "name": name,
+             "fecha": fecha,
+             "gender": gender,
+             "phone": phone
+            },
+            success:function(response){
+              closeToast();
+              console.log("response");
+              successToast("Te has registrado correctamente.");
+              window.location.href = "/photos";
+            },
+            error:function(response){
+              closeToast();
+              if(response.responseJSON){
+                console.log(response.responseJSON.message);
+                if(response.responseJSON.code == 202){
+                  errorToast("Cuenta ya registrada");
+                }
+                else{
+                  errorToast("Hubo un error en tu registro, intenta nuevamente");
+                }
+              }
+              else{
+                console.log(response.responseText);
+                errorToast("Hubo un error en tu registro, intenta nuevamente");
+              }
+            }
+         });
+      }
+    });
+
+    var date = document.getElementById('fecha');
+
+    function checkValue(str, max) {
+      if (str.charAt(0) !== '0' || str == '00') {
+        var num = parseInt(str);
+        if (isNaN(num) || num <= 0 || num > max) num = 1;
+        str = num > parseInt(max.toString().charAt(0)) && num.toString().length == 1 ? '0' + num : num.toString();
+      };
+      return str;
+    };
+
+    date.addEventListener('input', function(e) {
+      this.type = 'text';
+      var input = this.value;
+      if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
+      var values = input.split('/').map(function(v) {
+        return v.replace(/\D/g, '')
+      });
+      if (values[0]) values[0] = checkValue(values[0], 31);
+      if (values[1]) values[1] = checkValue(values[1], 12);
+      var output = values.map(function(v, i) {
+        return v.length == 2 && i < 2 ? v + ' / ' : v;
+      });
+      this.value = output.join('').substr(0, 14);
+    });
+
+    date.addEventListener('blur', function(e) {
+      this.type = 'text';
+      var input = this.value;
+      var values = input.split('/').map(function(v, i) {
+        return v.replace(/\D/g, '')
+      });
+      var output = '';
+      
+      if (values.length == 3) {
+        var year = values[2].length !== 4 ? parseInt(values[2]) + 2000 : parseInt(values[2]);
+        var month = parseInt(values[0]) - 1;
+        var day = parseInt(values[1]);
+        var d = new Date(year, month, day);
+        if (!isNaN(d)) {
+          document.getElementById('result').innerText = d.toString();
+          var dates = [d.getMonth() + 1, d.getDate(), d.getFullYear()];
+          output = dates.map(function(v) {
+            v = v.toString();
+            return v.length == 1 ? '0' + v : v;
+          }).join(' / ');
+        };
+      };
+      this.value = output;
+    });

@@ -1,0 +1,39 @@
+extends ../layouts/layout
+
+block content
+  include ../partials/navbar
+  include ../partials/nav
+  #wrapper
+    #backToTop.fixed-action-btn
+      a.btn-floating.btn-large
+        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
+    #login
+      .row
+        .col.s12.m8.l8.offset-l2.offset-m2.center
+          img.center(src="img/Grupo332.svg" alt="Logo Tio Temo")
+          br
+          hr
+          br
+          p.bd Inciar sesión
+          .row
+            form#login.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(method="post" action="/login")
+              span.error #{error}
+              .row
+                .input-field
+                  input#username.validate(type='email' name='username' required)
+                  label(for='username') ejemplo@email.com
+              .row
+                .input-field
+                  input#password.validate(type='password' name='password' required)
+                  label(for='password') Contraseña
+              a(href="/recuperar")
+                p.cv2
+                  u  ¿No recuerdas tu contraseña?
+                  |  Recupérala
+              br
+              button.btn-large.waves-effect.waves-light.rounded-button(type='submit')
+                | INICIA SESIÓN
+              p.s1 ¿Aún no eres sobrino del Tío Temo?
+              a(href="/reg")
+                p.s2
+                  u Regístrate

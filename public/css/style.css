@@ -1,0 +1,871 @@
+.z-depth-0 {
+  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0);
+}
+
+.toastloader {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px; }
+
+.colortoastloader {
+  border-color: white; }
+  
+.font-weight-100 {
+  font-weight: 100; }
+
+.font-weight-900 {
+  font-weight: 900; }
+
+.no-margin {
+  margin: 0; }
+  .no-margin-left {
+    margin-left: 0; }
+  .no-margin-bottom {
+    margin-bottom: 0; }
+  .no-margin-top {
+    margin-top: 0; }
+
+.no-padding {
+  padding: 0; }
+  .no-padding-left {
+    padding-left: 0; }
+  .no-padding-right {
+    padding-right: 0 !important; }
+
+.no-decoration {
+  text-decoration: none;
+  color: inherit; }
+
+.height-80 {
+  height: 80px; }
+
+.height-100 {
+  height: 100px; }
+
+.height-200 {
+  height: 200px; }
+
+.padding-top-4 {
+  padding-top: 4px; }
+
+.padding-top-10 {
+  padding-top: 10px; }
+
+.padding-top-20 {
+  padding-top: 20px; }
+
+.padding-top-30 {
+  padding-top: 30px; }
+
+.padding-top-40 {
+  padding-top: 40px; }
+
+.padding-top-50 {
+  padding-top: 50px; }
+
+.padding-top-60 {
+  padding-top: 60px; }
+
+.padding-top-80 {
+  padding-top: 80px; }
+
+.padding-top-100 {
+  padding-top: 100px; }
+
+.padding-top-12vh {
+  padding-top: 12vh; }
+
+.padding-bottom-10 {
+  padding-bottom: 10px; }
+
+.padding-bottom-20 {
+  padding-bottom: 20px; }
+
+.padding-bottom-30 {
+  padding-bottom: 30px; }
+
+.padding-bottom-40 {
+  padding-bottom: 40px; }
+
+.padding-bottom-50 {
+  padding-bottom: 50px; }
+
+.padding-left-10 {
+  padding-left: 10px; }
+
+.padding-left-20 {
+  padding-left: 20px !important; }
+
+.padding-left-30 {
+  padding-left: 30px; }
+
+.padding-left-40 {
+  padding-left: 40px; }
+
+.padding-left-50 {
+  padding-left: 50px; }
+
+.padding-left-70 {
+  padding-left: 70px; }
+
+.padding-right-10 {
+  padding-right: 10px; }
+
+.padding-right-20 {
+  padding-right: 20px !important; }
+
+.padding-right-30 {
+  padding-right: 30px !important; }
+
+.padding-right-40 {
+  padding-right: 40px; }
+
+.padding-right-50 {
+  padding-right: 50px; }
+
+.padding-right-70 {
+  padding-right: 70px; }
+
+.margin-top-7 {
+  margin-top: 7px; }
+
+.margin-top-10 {
+  margin-top: 10px; }
+
+.margin-top-20 {
+  margin-top: 20px; }
+
+.margin-top-30 {
+  margin-top: 30px; }
+
+.margin-top-40 {
+  margin-top: 40px; }
+
+.margin-top-50 {
+  margin-top: 50px; }
+
+.margin-top-80 {
+  margin-top: 80px; }
+
+.margin-bottom-10 {
+  margin-bottom: 10px; }
+
+.margin-bottom-20 {
+  margin-bottom: 20px; }
+
+.margin-bottom-30 {
+  margin-bottom: 30px; }
+
+.margin-bottom-40 {
+  margin-bottom: 40px; }
+
+.margin-bottom-50 {
+  margin-bottom: 50px; }
+
+.margin-left-5 {
+  margin-left: 5px !important; }
+
+.margin-left-10 {
+  margin-left: 10px; }
+
+.margin-left-20 {
+  margin-left: 20px; }
+
+.margin-left-30 {
+  margin-left: 30px; }
+
+.margin-left-40 {
+  margin-left: 40px; }
+
+.margin-left-50 {
+  margin-left: 50px; }
+
+.margin-right-10 {
+  margin-right: 10px; }
+
+.margin-right-20 {
+  margin-right: 20px; }
+
+.margin-right-30 {
+  margin-right: 30px; }
+
+.margin-right-40 {
+  margin-right: 40px; }
+
+.margin-right-50 {
+  margin-right: 50px; }
+
+.display-inline {
+  display: inline-block; }
+
+.rounded-button {
+  border-radius: 50px; }
+
+.rounded-table {
+  border-radius: 50px; }
+
+.rounded-card {
+  border-radius: 15px;
+  overflow: hidden;}
+
+.rc2{
+  overflow: hidden;
+  /*min-height: 70vh;*/
+  margin: 0 !important;
+  display: flex;
+  justify-content: center;
+}
+
+.parallax-container {
+  height: 50px;
+}
+
+.text-bold {
+  font-weight: 900; }
+
+.text-black {
+  color: black !important; }
+
+.text-white {
+  color: white !important; }
+
+.text-justify {
+  text-align: justify; }
+
+.mod{
+  font-family: 'PlantinStd';
+  font-size: 20px;
+}
+
+.no-scroll {
+  margin: 0;
+  height: 100%;
+  overflow: hidden; }
+
+.rounded-button-white {
+  border-radius: 50px;
+  color: black;
+  background-color: white;
+  font-size: 14px;
+  padding: 15px 25px;
+  width: 100%; }
+
+@font-face {
+  font-family: 'PlantinStd-Italic';
+  src: url('fonts/PlantinStd-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PlantinStd';
+  src: url('fonts/PlantinStd.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ProximaNovaBlack';
+  src: url('fonts/FontsFree-Net-Proxima-Nova-Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('fonts/ProximaNova-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ProximaNovaBold';
+  src: url('fonts/ProximaNovaBold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#backToTop .btn-floating.btn-large {
+  background-color: #00A660; }
+
+#navbar {
+  width: 100%;
+  background-color: #FFB52E;
+  position: absolute; }
+  #navbar img.title{
+    padding-left: 30px;
+  }
+  #navbar #nav-trigger {
+    cursor: pointer; }
+
+  .tabs .indicator {
+      background-color:white;
+  } /*Color of underline*/
+
+#navbarAdmin {
+  width: 100%;
+  background-color: #FF5647;
+  height: 12vh;
+  position: absolute; }
+  #navbarAdmin img.title{
+    padding-left: 30px;
+  }
+  #navbarAdmin img.titletwo{
+    padding-right: 50px;
+  }
+  #navbarAdmin a,i{
+    color: white;
+    font-size: calc(1em + .5vw);
+    padding-right: 20px;
+    font-family: "ProximaNovaBlack";
+  }
+  #navbarAdmin ul,li {
+    color: white;
+    font-size: calc(.5em + .5vw) !important;
+  }
+  #navbarAdmin #nav-trigger {
+    cursor: pointer; }
+
+#nav {
+  background-color: white;
+  height: 100vh;
+  min-height: 500px;
+  z-index: 10;
+  top: -100vh;
+  width: 100%;
+  position: absolute;
+  font-family: "PlantinStd-Italic"; }
+  #nav #nav-wrapper {
+    position: relative;
+    height: 100%; }
+    #nav #nav-wrapper #lira-guitarra {
+      position: absolute;
+      width: 30%;
+      bottom: 5%;
+      right: 40px; }
+    #nav #nav-wrapper #close-nav {
+      cursor: pointer;
+      color: black;
+      font-size: 18px;
+      padding-left: 6vh; }
+    #nav #nav-wrapper #menu {
+      font-family: "PlantinStd";
+      font-size: 28px; }
+    #nav #nav-wrapper #it {
+      color: #3B3836;
+      font-size: 23px;
+      padding-top: 3%;
+      padding-bottom: 2%;}
+    #nav #nav-wrapper .btn-large {
+      background-color: #00A660;
+      color: white;
+      font-size: 14px;
+      font-family: "PlantinStd"; }
+
+#yellowSection {
+  padding-top: 100px;
+  background-color: #FFB52E;
+  height: 106vh;
+  min-height: 450px; }
+  #yellowSection img.toy {
+    max-height: 80vh;
+    max-width: 100%; }
+  #yellowSection img.small {
+    width: 50%; }
+  #yellowSection img.title {
+    width: 100%; }
+  #yellowSection .title {
+    font-family: "PlantinStd-Italic";
+    font-size: 20px; }
+
+#whiteSectionA {
+  background-color: white;
+  padding: 20px;
+  font-family: "PlantinStd";
+ }#whiteSectionA img.bt{
+  bottom: 0;
+  align-self: flex-end;
+ }
+  #whiteSectionA img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 15px;
+  }
+  #whiteSectionA .content {
+    padding-top: 4px;
+    font-size: 24px;
+  }
+  #whiteSectionA a{
+    font-family: "PlantinStd";
+    background-color: #00A660;
+    font-size: calc(.5em + .5vw);
+  }
+  #whiteSectionA span{
+    font-size: 16px;
+    font-family: "PlantinStd-Italic";
+  }
+  #whiteSectionA .iris{
+    background-image: url(../img/Grupo424@2x.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: bottom;
+  }
+  #whiteSectionA .mh{
+    margin-top: 30vh;
+  }
+  #whiteSectionA .mhei{
+    min-height: 38vh;
+  }
+  #modal1{
+    text-align: left;
+  } #whiteSectionA .it{
+    font-size: 18px;
+    font-family: "PlantinStd-Italic";
+  } #whiteSectionA .hg{
+    height: 490px !important;
+  }
+
+  #greySection {
+    background-color: #ebebeb;
+    padding: 20px;
+  }
+  #greySection img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 15px;
+  }
+  #greySection .content {
+    padding-top: 4px;
+    font-size: 26px;
+    font-family: "PlantinStd";
+  }
+  #greySection a{
+    font-family: "PlantinStd";
+    font-size: calc(.5em + .5vw);
+    background-color: white;
+    color: black;
+  }
+  #greySection span, .cv{
+    font-size: 18px;
+    font-family: "PlantinStd-Italic";
+  }
+
+  #whiteSectionB {
+    background-color: white;
+    padding: 20px;
+    height: 100vh;
+    min-height: 450px;
+    font-family: "PlantinStd";
+  }
+  #whiteSectionB img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 15px;
+  }
+  #whiteSectionB button {
+    color: black;
+    font-size: calc(.5em + .5vw);
+    background-color: white;
+    font-family: "PlantinStd";
+  }
+  #whiteSectionB img.center2{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    padding: 15px;
+  }
+  #whiteSectionB .content {
+    padding-top: 4px;
+    font-size: 26px;
+  }
+  #whiteSectionB span{
+    font-family: "PlantinStd-Italic";
+    font-size: 18px;
+  }
+  #whiteSectionB label, input{
+    font-family: "PlantinStd";
+    font-size: 15px;
+  }
+  #whiteSectionB .pd{
+    padding: 10vh;
+  }
+  #whiteSectionB .cv{
+    font-size: 10px;
+    font-family: "PlantinStd-Italic";
+    color: #3B3836;
+    opacity: .5;
+  }
+  #whiteSectionB .cv2{
+    font-size: 10px;
+    font-family: "PlantinStd-Italic";
+    color: black;
+  }#whiteSectionB .blackText{
+    font-size: 14px;
+    font-family: "PlantinStd";
+    color: black;
+  }
+
+  #modal1 img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 15px;
+  }
+  #modal1 span{
+    font-family: "PlantinStd-Italic";
+    font-size: 18px;
+  }
+  #modal2 img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 15px;
+  }
+
+  #login {
+    background-color: white;
+    padding: 20px 20px 0;
+    min-height: 450px;
+    padding-top: 6%;
+  }
+  #login img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 15px;
+  }
+  #login button{
+    background-color: #00A660;
+    color: white;
+    font-family: "PlantinStd";
+    font-size: calc(.5em + .5vw);
+  }
+  #login p.bd {
+    font-family: "ProximaNovaBlack";
+    font-size: 18px;
+    text-align: justify;
+    padding-left: 4.5vw;
+  }
+  #login .cv{
+    font-size: 18px;
+    font-family: "PlantinStd-Italic";
+    color: #3B3836;
+  }
+  #login input{
+    font-size: 15px;
+    font-family: "PlantinStd";
+    color: black !important;
+  }
+  #login .cv2{
+    font-size: 14px;
+    font-family: "PlantinStd";
+  }
+  #login u{
+    color: black;
+  }
+  #login p.s1{
+    color: #3B3836;
+    opacity: .5;
+    font-size: 23px;
+    font-family: "PlantinStd-Italic";
+  }
+  #login p.s2{
+    color: #3B3836;
+    font-size: 23px;
+    font-family: "PlantinStd-Italic";
+    margin-bottom:0;
+  }
+  #login .error{
+    font-size: 15px;
+    font-family: "PlantinStd";
+    color: black;
+    background-color: #F5BFB0;
+  }
+
+  #reg {
+    background-color: white;
+    padding: 20px;
+    height: 100vh;
+    min-height: 450px;
+    padding-top: 7%;
+  }
+  #reg img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    padding: 15px;
+  }
+  #reg img.center2{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 15px;
+  }
+  #reg .btn-large{
+    background-color: #00A660;
+    color: white;
+    font-family: "PlantinStd";
+    font-size: calc(.5em + .5vw);
+  }
+  #reg p.bd {
+    font-family: "ProximaNovaBlack";
+    padding-top: 4px;
+    font-size: 16px;
+    text-align: justify;
+  }
+  #reg .cv2, a{
+    font-size: 12px;
+    font-family: "PlantinStd";
+    color: #9b9a99;
+  }#reg .input-field, option, .select-dropdown, .dropdown-trigger, label{
+    color: #9b9a99 !important;
+    font-size: 15px;
+    font-family: "PlantinStd";
+  } #reg input{
+    color: black;
+    font-size: 15px;
+    font-family: "PlantinStd";
+  }
+
+  .left{
+    text-align: left;
+  }
+
+  #qr {
+    background-color: white;
+    padding: 20px;
+    height: 100vh;
+    min-height: 450px;
+    padding-top: 7%;
+    font-family: "PlantinStd";
+  }
+  #qr img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 15px;
+  }
+  #qr .content {
+    padding-top: 4px;
+    font-size: 28px;
+  }
+  #qr img.center2{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    padding: 15px;
+  }
+  #qr .btn-large{
+    background-color: #00A660;
+    color: white;
+    font-family: "PlantinStd";
+    font-size: calc(.5em + .5vw);
+    padding: 0 0px !important;
+  }
+  #qr input{
+    font-family: "PlantinStd";
+    font-size: 15px;
+    text-align: center;
+  }
+
+  #regFam {
+    background-color: white;
+    padding: 20px;
+    height: 100vh;
+    min-height: 450px;
+    padding-top: 6%;
+  }
+  #regFam .btn-large{
+    background-color: #00A660;
+    color: white;
+    font-family: "PlantinStd";
+    font-size: calc(.5em + .5vw);
+  }
+  #regFam p.bd {
+    font-family: "ProximaNovaBlack";
+    padding-top: 24px;
+    font-size: 16px;
+    text-align: justify;
+  }
+  #regFam .cv2{
+    font-size: 12px;
+    font-family: "PlantinStd";
+    color: #9b9a99;
+  }#regFam input{
+    color: black;
+    font-size: 15px;
+    font-family: "PlantinStd";
+  }#regFam .success{
+    font-size: 15px;
+    font-family: "PlantinStd";
+    color: black;
+    background-color: #BDECB6;
+  }
+
+
+  #photos {
+    padding: 20px;
+    font-family: "PlantinStd";
+    padding-top: 7%;
+  }
+  #photos img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-bottom: 0px;
+  }
+  #photos h1, h2, h3{
+    font-family: 'ProximaNovaBlack';
+  }
+  #photos .content {
+    padding-top: 4px;
+    font-size: 28px;
+  }
+  #photos .btn {
+    font-family: "PlantinStd";
+    font-size: 14px;
+    background-color: #00A660;
+    color: white;
+  }
+  #photos span{
+    font-size: 20px;
+    font-family: "PlantinStd-Italic";
+    color: #3B3836;
+  }
+  #photos .cv{
+    text-align: center;
+    font-size: 18px;
+    font-family: "PlantinStd-Italic";
+    color: #86ABD0;
+  }
+  #photos .iris{
+    background-image: url('../img/Trazado 1180@2x.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #photos img.right{
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  #photos img.left{
+    padding: 5px;
+    position: absolute;
+    width: 60%;
+    bottom: 0;
+    left: 0;
+  }
+  #photos .blueP{
+    border-style: none;
+    background: transparent;
+    font-family: "PlantinStd";
+    color: #6795C4;
+    font-size: calc(.7em + .7vw);
+  }
+  #photos .error{
+    font-size: 15px;
+    font-family: "PlantinStd";
+    color: black;
+    background-color: #F5BFB0;
+  }
+
+  #table{
+    padding-top: 20vh;
+  }#table th{
+    font-family: 'ProximaNovaBlack';
+    font-size: 16px;
+    text-align: center;
+  }#table td {
+    font-family: "PlantinStd";
+    font-size: 15px;
+    text-align: center;
+  }#table h4,h1,h2,h3,h6{
+    font-family: 'ProximaNovaBold';
+  }
+
+  #contacto p.ti{
+    padding-top: 2vh;
+    font-family: "PlantinStd";
+    font-size: 26px;
+  } #contacto p{
+    font-family: "PlantinStd";
+    font-size: 16px;
+    color: white;
+  }#contacto .input-field, option, .select-dropdown, .dropdown-trigger, label{
+    color: #9b9a99 !important;
+    font-size: 15px;
+    font-family: "PlantinStd";
+  } #contacto .btn-large{
+    background-color: #00A660;
+    color: white;
+    font-family: "PlantinStd";
+    font-size: 14px;
+  }#contacto p.sm{
+    font-family: "PlantinStd";
+    font-size: 15px;
+    color: black;
+  }#contacto p.smit{
+    font-size: 10px;
+    font-family: "PlantinStd-Italic";
+  }#contacto img.pd{
+    padding-top: 5vh;
+  }.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}.embed-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.z-depth-0 {
+  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0);
+}
+
+@media only screen and (max-width: 600px) {
+  #yellowSection, #whiteSectionA, #blueSection, #whiteSectionB, #redSection, #photos, #regFam, #qr, #reg, #login, #contacto, #table {
+    height: auto;
+    padding-bottom: 30px;
+    padding-top: 20%; }
+  #blueSection, #redSection {
+    border-radius: 18px; }
+  #whiteSectionA .iris{
+    background-image: url('../img/try.png') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height:  0vh;
+    }
+  #table{
+    padding-top: 20vh;
+   }
+  }
+
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
