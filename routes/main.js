@@ -1,6 +1,7 @@
 var express     = require('express');
 var Parse       = require("parse/node");
 var Mailgunny   = require('mailgunny');
+var Mailchimp = require("mailchimp-api-v3");
 
 var router      = express.Router();
 
@@ -121,7 +122,7 @@ var functions = {
     var comments = req.body.quoteComments;
 
     // Contact email
-    var emailTo = ['artemio.abrego@mentesexpertas.mx', 'nadia.sanchez@mentesexpertas.mx', 'artemio@drbrand.mx'];
+    var emailTo = ['contacto@museomiju.com'];
     // var emailTo = ['eduardo.vera.pineda@gmail.com'];
     
     var html = `
@@ -176,12 +177,12 @@ var functions = {
       </html>
     `;
 
-    var mail = new Mailgunny({domain: 'brounieapps.com', key: 'key-f34136558bac453323e9067ad1905012'});
+    var mail = new Mailgunny({domain: 'mg.museomiju.com', key: 'b8a554d34cf8a1adb96c21990e714a79-baa55c84-f643f9f8'});
     
     mail.send({
       from: "contacto@museomiju.com",
       to: emailTo,
-      subject: 'MIJU | ¡Hay un nuevo prospecto!',
+      subject: 'Museo MIJU | ¡Hay un nuevo prospecto!',
       html: html
     }, function(reque, resp){
       console.log('Email to Miju('+ emailTo +') was sent.');
@@ -191,8 +192,8 @@ var functions = {
   },
   sendQuote2: function(req, res, next){
     var mail = new Mailgunny({
-      domain: 'brounieapps.com',
-      key: 'key-f34136558bac453323e9067ad1905012'
+      domain: 'mg.museomiju.com',
+      key: 'b8a554d34cf8a1adb96c21990e714a79-baa55c84-f643f9f8'
     });
 
     var mailAddress = req.body.quoteMail;
@@ -277,7 +278,7 @@ var functions = {
         console.log("Email saved in list for newsletter. ObjectId: " + item.id);
 
         var mailAddress = req.body.email;
-        var emailTo = ['artemio.abrego@mentesexpertas.mx', 'nadia.sanchez@mentesexpertas.mx', 'artemio@drbrand.mx', 'boletin@museomiju.com'];
+        var emailTo = ['boletin@museomiju.com'];
         // var emailTo = ['eduardo.vera.pineda@gmail.com'];
         
         var html = `
@@ -320,11 +321,11 @@ var functions = {
         </html>
         `;
     
-        var mail = new Mailgunny({domain: 'brounieapps.com', key: 'key-f34136558bac453323e9067ad1905012'});
+        var mail = new Mailgunny({domain: 'mg.museomiju.com', key: 'b8a554d34cf8a1adb96c21990e714a79-baa55c84-f643f9f8'});
         mail.send({
           from: "boletin@museomiju.com",
           to: emailTo,
-          subject: 'MIJU | ¡Suscripción a Newsletter!',
+          subject: 'Museo MIJU | ¡Suscripción a Newsletter!',
           html: html
         }, function(reque, resp){
             console.log('Email to Miju('+ emailTo +') was sent.');
@@ -342,14 +343,27 @@ var functions = {
               </html>
             `;
 
-            var mail_user = new Mailgunny({domain: 'brounieapps.com', key: 'key-f34136558bac453323e9067ad1905012'});
+            var mail_user = new Mailgunny({domain: 'mg.museomiju.com', key: 'b8a554d34cf8a1adb96c21990e714a79-baa55c84-f643f9f8'});
             mail_user.send({
               from: "boletin@museomiju.com",
               to: mailAddress,
-              subject: 'MIJU | ¡Suscripción a Newsletter!',
+              subject: 'Museo MIJU | ¡Suscripción a Newsletter!',
               html: html_user
             }, function(reque, resp){
               console.log('Email from MIJU to Client ('+ mailAddress +') was sent.');
+
+              var mailchimp = new Mailchimp('6a4a6701c359167ff97b96c569bd556a-us20');
+
+              mailchimp.post('/lists/40be8a15fb/members', {
+                  email_address : mailAddress,
+                  status : 'subscribed'
+              })
+              .then(function(results) {
+                  console.log('Email ('+ mailAddress +') was subscribed into Mailchimp successfully');
+              })
+              .catch(function(err) {
+                  console.log(err);
+              })
             });
               
         });
@@ -488,24 +502,26 @@ var functions = {
       if(req.session.user.admin == true){
         var prospectQuery = new Parse.Query(User);
         prospectQuery.notEqualTo("admin",true);
-        prospectQuery.limit(10000);
+        prospectQuery.limit(20000);
         prospectQuery.find({
           success: function(prospects){
             console.log(prospects.length + " contactos.");
             context.prospects = prospects;
             var prospectQuery2 = new Parse.Query(PhotosEvent);
             prospectQuery2.exists('image1');
-            prospectQuery2.limit(10000);
+            prospectQuery2.limit(20000);
             prospectQuery2.find({
               success: function(prospectsNR){
                 console.log(prospectsNR.length + " contactos no registrados.");
                 
                 context.prospectsNR = prospectsNR;
                 var prospectQuery3 = new Parse.Query(Newsletter);
+                prospectQuery3.limit(20000);
                 prospectQuery3.find({
                   success: function(prospectsNS){
                     context.prospectsNS = prospectsNS;
                     var prospectQuery4 = new Parse.Query(Relative);
+                    prospectQuery4.limit(20000);
                     prospectQuery4.find({
                       success: function(familia){
                         context.familia = familia;

@@ -174,7 +174,7 @@ block additional_scripts
   script(type='text/javascript').
     function exportTableToExcel(tableID, filename = ''){
         var downloadLink;
-        var dataType = 'application/vnd.ms-excel';
+        var dataType = 'application/vnd.ms-excel;charset=UTF-8,%EF%BB%BF';
         var tableSelect = document.getElementById(tableID);
         var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
         
@@ -193,7 +193,7 @@ block additional_scripts
             navigator.msSaveOrOpenBlob( blob, filename);
         }else{
             // Create a link to the file
-            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+            downloadLink.href = 'data:' + dataType + tableHTML;
         
             // Setting the file name
             downloadLink.download = filename;

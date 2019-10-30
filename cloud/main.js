@@ -13,7 +13,7 @@ Parse.Cloud.afterSave('PhotosEvent', function(request) {
 
     if(email_send == true){
       console.log(true);
-      var mail = new Mailgunny({domain:'brounieapps.com', key:'key-f34136558bac453323e9067ad1905012'});
+      var mail = new Mailgunny({domain:'mg.museomiju.com', key:'b8a554d34cf8a1adb96c21990e714a79-baa55c84-f643f9f8'});
   
       var html = `
       <html>
@@ -334,7 +334,7 @@ Parse.Cloud.afterSave('PhotosEvent', function(request) {
       mail.send({
           from: "tusrecuerdos@museomiju.com",
           to: userEmail,
-          subject: 'Miju | ¡Regístrate!',
+          subject: 'Museo MIJU | ¡Regístrate!',
           html: html
       }, function(req1, res1){
           console.log('Welcome email from Miju to ' + userEmail + ' sent.');

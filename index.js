@@ -55,11 +55,11 @@ var api = new ParseServer({
          module: 'parse-server-simple-mailgun-adapter',
          options: {
            // The address that your emails come from
-           fromAddress: 'robot@brounieapps.com',
+           fromAddress: 'admin@museomiju.com',
            // Your domain from mailgun.com
-           domain: 'brounieapps.com',
+           domain: 'mg.museomiju.com',
            // Your API key from mailgun.com
-           apiKey: 'key-f34136558bac453323e9067ad1905012',
+           apiKey: 'b8a554d34cf8a1adb96c21990e714a79-baa55c84-f643f9f8',
          }
   }
 

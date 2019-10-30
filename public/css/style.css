@@ -869,3 +869,37 @@
     background-attachment: scroll;
   }
 }
+
+@media screen and (min-width: 768px){
+  .share-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .share-web {
+    display: none;
+  }
+}
+
+#photos .share-button {
+  font-family: "PlantinStd";
+  font-size: 14px;
+  background-color: #00A660;
+  color: white;
+  margin: 1em;
+}
+#photos .share-button i{
+  color: white!important;
+}
+
+#photos .download-button {
+  font-family: "PlantinStd";
+  font-size: 14px;
+  background-color: #00A660;
+  color: white;
+  margin: 1em;
+}
+#photos .download-button i{
+  color: white!important;
+}

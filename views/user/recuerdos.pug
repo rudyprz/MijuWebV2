@@ -3,16 +3,22 @@ extends ../layouts/layout
 mixin pic(img,id)
   -var url=img.url()
   .col.s12.m10.l6.offset-m1(id= url)
-    img.center(src=url)
-    p.blueP
-      | Compartir
+    img#image.center(src=url)
+    button.share-button(onclick='sharing("' + url + '")') 
+      i.fas.fa-share-alt.fa-cog
+      | Compartir Recuerdo
+    a(href=url download)
+      button.download-button
+        i.fas.fa-download.fa-cog
+        | Descargar Recuerdo
+    p.blueP.share-web
+      | Compartir en:
       tab2
-      a(href='http://instagram.com' target='_blank')
-        i.fab.fa-instagram.fa-cog
-      tab1
-      -var link='http://www.facebook.com/sharer.php?u=' + url
-      a(href=link target='_blank')
+      a(href='https://facebook.com/sharer.php?u=' + url, target='_blank')
         i.fab.fa-facebook.fa-cog
+      tab1
+      a(href='https://twitter.com/intent/tweet?text=Mi recuerdo MIJU&url=' + url, target='_blank')
+        i.fab.fa-twitter.fa-cog
       form#delete(action='/delete' method='post' value=id)
         button#idb.blueP(onclick='myFunction("'+ id +'")', value=id)
           i.fas.fa-times.fa-cog
@@ -86,3 +92,47 @@ block additional_scripts
         });
       }
     }
+
+    function sharing(img) {
+      if (navigator.share){
+        navigator.share({
+          title: 'Mira mi recuerdo Miju',
+          url: img
+        }).then(() => {
+          console.log("Thanks for sharing!");
+        }).catch(console.error);
+      } else {
+        console.log("Device not supported")
+      }
+    }
+
+    function downloadFile(url) {
+          //console.log(url);
+          var xhr = new XMLHttpRequest();
+          xhr.responseType = "blob";
+          xhr.onload = function(event) {
+              var blob = xhr.response;
+          };
+          xhr.open("GET", url);
+          xhr.send();
+          console.log('end');
+                
+          xhr.onload = function(e) {
+              if (this.status == 200) {
+              console.log(this.response);
+                    
+              var blob = new Blob([this.response], {type: this.response.type});
+              let a = document.createElement("a");
+                  a.style = "display: none";
+                  document.body.appendChild(a);
+                  //Create a DOMString representing the blob and point the link element towards it
+                  let url = window.URL.createObjectURL(blob);
+                  a.href = url;
+                  a.download = 'MiRecuerdoMIJU.jpg';
+                  //programatically click the link to trigger the download
+                  a.click();
+                  //release the reference to the file by revoking the Object URL
+                  window.URL.revokeObjectURL(url);
+              }
+          };
+      }
