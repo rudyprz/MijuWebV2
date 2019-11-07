@@ -1,7 +1,7 @@
 var express     = require('express');
 var Parse       = require("parse/node");
 var Mailgunny   = require('mailgunny');
-var Mailchimp = require("mailchimp-api-v3");
+// var Mailchimp = require("mailchimp-api-v3");
 
 var router      = express.Router();
 
@@ -424,7 +424,7 @@ var functions = {
             }, function(reque, resp){
               console.log('Email from MIJU to Client ('+ mailAddress +') was sent.');
 
-              var mailchimp = new Mailchimp('6a4a6701c359167ff97b96c569bd556a-us20');
+             /* var mailchimp = new Mailchimp('6a4a6701c359167ff97b96c569bd556a-us20');
 
               mailchimp.post('/lists/40be8a15fb/members', {
                   email_address : mailAddress,
@@ -435,7 +435,7 @@ var functions = {
               })
               .catch(function(err) {
                   console.log(err);
-              })
+              }) */
             });
               
         });
