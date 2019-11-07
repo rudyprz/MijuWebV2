@@ -25,7 +25,7 @@ if (!databaseUri) {
 APP_ID = 'BrounieApp';
 MASTER_KEY = "C4suYZKkyRMYPGR7fEae";
 APP_NAME = "Museo MIJU";
-serverURL = "https://museomiju.com/parse";
+serverURL = "http://localhost:8080/parse";
 
 TAG = APP_ID + ":" + os.hostname();
 var dd_options = {

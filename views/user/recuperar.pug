@@ -1,16 +1,11 @@
 extends ../layouts/layout
 
 block content
-  include ../partials/navbar
-  include ../partials/nav
   #wrapper
     #backToTop.fixed-action-btn
       a.btn-floating.btn-large
         i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
     #qr
-      .row
-        .col.s12.m8.l8.offset-l2.offset-m2.center
-          img.center(src="img/Grupo251.svg" alt="Mis Recuerdos")
       .row
         .col.s12.m8.l8.offset-l2.offset-m2
           .card.grey.lighten-3.rounded-card
@@ -26,5 +21,5 @@ block content
                       span.helper-text(data-error='Favor de llenar el campo' data-success='¡Correcto!') Ingresa tu correo electrónico con el que te registraste
                       br
                       br
-                      button.btn-large.waves-effect.waves-light.rounded-button(type='submit')
+                      button.btn-large.waves-effect.waves-light.rounded-button(style="padding: 0 10px!important", type='submit')
                         | RECUPERAR

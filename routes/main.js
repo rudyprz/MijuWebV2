@@ -26,7 +26,28 @@ var functions = {
         success: function(photos){
           // console.log(photos.length + " photos found.");
           context.photos = photos;
-          res.render('user/recuerdos', context);
+          var uquery = new Parse.Query(User);
+          uquery.equalTo("username", req.session.mail);
+          uquery.find({
+            success: function(profile){
+              context.profile = profile;
+              var fquery = new Parse.Query(Relative);
+              fquery.equalTo("relative", req.session.mail);
+              fquery.find({
+                success: function(relatives){
+                  context.relatives = relatives;
+                  //console.log(context);
+                  res.render('user/recuerdos', context);
+                },
+                error: function(error){
+                  res.send(error);
+                }
+              })
+            },
+            error: function(error) {
+              res.send(error);
+            }
+          })
         },
         error: function(error){
           res.send(error);
@@ -46,6 +67,7 @@ var functions = {
         req.session.user = user;
         req.session.name = user.get("name");
         req.session.mail = user.get("username");
+        console.log(req.session)
 
         context = {name: req.session.name, id: req.session.mail};
         var query = new Parse.Query(PhotosEvent);
@@ -54,8 +76,28 @@ var functions = {
         query.find({
           success: function(photos){
             context.photos = photos;
-            //console.log(photos);
-            res.render('user/recuerdos', context);
+            var uquery = new Parse.Query(User);
+            uquery.equalTo("username", req.session.mail);
+            uquery.find({
+              success: function(profile){
+                context.profile = profile;
+                var fquery = new Parse.Query(Relative);
+                fquery.equalTo("relative", req.session.mail);
+                fquery.find({
+                  success: function(relatives){
+                    context.relatives = relatives;
+                    //console.log(context);
+                    res.render('user/recuerdos', context);
+                  },
+                  error: function(error){
+                    res.send(error);
+                  }
+                })
+              },
+              error: function(error) {
+                res.send(error);
+              }
+            })
           },
           error: function(error){
             res.send(error);
@@ -220,6 +262,36 @@ var functions = {
         console.log(error);
       }
     });
+  },
+  editPass: function(req, res, next){
+    var context = {};
+    var query = new Parse.Query(User);
+    query.equalTo("username", req.body.username);
+    if(req.body.username != null){
+      console.log(req.body);
+      query.first({
+        success: function(object) {
+          //console.log(object);
+          object.set("password", req.body.password);
+          object.set("pass", req.body.password);
+          Parse.Object.saveAll([object], { useMasterKey: true })
+        /*  object.save({useMasterKey : true}, {
+            success: function(object) {
+              console.log("Perfil Modificado Correctamente");
+            }, error: function(object, error){
+              console.log("Error: " + error);
+            }
+          }); */
+          //console.log(object)
+          res.send({status:"Success"});
+        },error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      })
+    }else{
+      context = {error: "Hubo un error al modificar tu contraseña. Intenta de nuevo por favor."};
+      res.redirect('/login');
+    }
   },
   signUp: function(req, res, next){
     var form = req.body;
@@ -400,6 +472,63 @@ var functions = {
       res.redirect('/ver-mis-recuerdos');
     }
   },
+  deleteFam: function(req, res, next){
+    var context = {};
+    var query = new Parse.Query(Relative);
+    //console.log(req.session.mail);
+    console.log(req.body);
+    query.equalTo("mail", req.body.id);
+    if(req.body.id != null){
+      console.log(req.body);
+      //console.log(query);
+      query.first({
+        success: function(object) {
+          //console.log(object);
+          object.destroy();
+          res.send({status:"Success"});
+        },error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      })
+    }else{
+      console.log(req.body.id);
+      context = {error: "Hubo un error al borrar el familiar. Intenta de nuevo por favor."};
+      res.redirect('/ver-mis-recuerdos');
+    }
+  },
+  edit: function(req, res, next){
+    var context = {};
+    var query = new Parse.Query(User);
+    query.equalTo("username", req.body.username);
+    if(req.body.username != null){
+      console.log(req.body);
+      query.first({
+        success: function(object) {
+          //console.log(object);
+          object.set("name", req.body.name);
+          object.set("birthdate", req.body.fecha.replace(/ /g, ""));
+          object.set("gender", req.body.gender);
+          object.set("phone", req.body.phone);
+          Parse.Object.saveAll([object], { useMasterKey: true })
+        /*  object.save({useMasterKey : true}, {
+            success: function(object) {
+              console.log("Perfil Modificado Correctamente");
+            }, error: function(object, error){
+              console.log("Error: " + error);
+            }
+          }); */
+          //console.log(object)
+          res.send({status:"Success"});
+        },error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      })
+    }else{
+      console.log(req.body.username);
+      context = {error: "Hubo un error al modificar perfil. Intenta de nuevo por favor."};
+      res.redirect('/ver-mis-recuerdos');
+    }
+  },
   rel: function(req, res, next){
     var context = {};
     var relative = new Relative();
@@ -453,8 +582,30 @@ var functions = {
         success: function(photos){
           context.photos = photos;
           context.name = req.session.name;
+          context.id= req.session.mail;
           //console.log(photos);
-          res.render('user/recuerdos', context);
+          var uquery = new Parse.Query(User);
+          uquery.equalTo("username", req.session.mail);
+          uquery.find({
+            success: function(profile){
+              context.profile = profile;
+              var fquery = new Parse.Query(Relative);
+              fquery.equalTo("relative", req.session.mail);
+              fquery.find({
+                success: function(relatives){
+                  context.relatives = relatives;
+                  //console.log(context);
+                  res.render('user/recuerdos', context);
+                },
+                error: function(error){
+                  res.send(error);
+                }
+              })
+            },
+            error: function(error) {
+              res.send(error);
+            }
+          })
         },
         error: function(error){
           res.send(error);
@@ -484,7 +635,7 @@ var functions = {
   },
   logoutUsr: function(req, res, next){
     req.session.user = null;
-    res.redirect('/');
+    res.redirect('/login');
   },
   recover: function(req, res, next){
     var context = {
@@ -580,7 +731,10 @@ router.get('/tabla-usuarios', functions.contacts);
 
 router.get('/emails', functions.emails);
 
+router.post('/edit', functions.edit);
 router.post('/delete', functions.delete);
+router.post('/deleteFam', functions.deleteFam);
+router.post('/editPass', functions.editPass);
 router.post('/login', functions.signIn);
 router.post('/loginAdmin', functions.signInAdmin);
 router.post('/news', functions.news);

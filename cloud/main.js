@@ -248,50 +248,7 @@ Parse.Cloud.afterSave('PhotosEvent', function(request) {
           <div class="row" id="thanks">
             <div class="col s12 m6 offset-m3 center">
               <h5>¡Gracias por tomarte la foto en nuestra exhibición de Transformers!</h5>
-              <h6>Para tener acceso a la foto sólo sigue cualquiera de las siguientes opciones:</h6>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s12 m6 no-padding padding-right-20">
-              <div class="greySquare padding-20" style="height:370px">
-                <div class="row">
-                  <div class="col s12 m2 center">
-                    <h5 class="no-margin greenNumber">1</h5>
-                  </div>
-                  <div class="col s12 m8 center">
-                    <h5 class="info no-margin">Escanea el Código QR anexo o</h5>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 m6"><img src="https://museomiju.com/img/emails/qr.png" alt="MIJU" style="width:100%"/></div>
-                  <div class="col s12 m6">
-                    <p class="margin-top-50 italic-font">(Si es iPhone sólo usa tu cámara, si es Android necesitas bajar una aplicación para escanear códigos QR)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col s12 m6 no-padding padding-left-20">
-              <div class="greySquare padding-20" style="height:370px">
-                <div class="row">
-                  <div class="col s12 m2 center">
-                    <h5 class="no-margin greenNumber">2</h5>
-                  </div>
-                  <div class="col s12 m8 center">
-                    <h5 class="info no-margin">
-                       Entra a </h5><a href="https://museomiju.com/QR" target="_blank">www.museomiju.com/QR</a>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 m4 offset-m4 whiteSquare margin-top-20">
-                    <p class="center">${objectId}</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12">
-                    <p class="center italic-font">Y captura este código </p>
-                  </div>
-                </div>
-              </div>
+              <h6>Para tener acceso a la foto, entra a www.museomiju.com/reg</h6>
             </div>
           </div>
           <div class="greySquare padding-20">
@@ -319,7 +276,7 @@ Parse.Cloud.afterSave('PhotosEvent', function(request) {
               <p>Participa en los concursos para ganar cosas interesantes </p>
               <p>Recibe descuentos en las entradas (Próximamente)</p>
               <p>Previo a la apertura del museo tendrás privilegios exclusivos para "sobrinos" del Tío Temo</p>
-              <p>Dinos que más te gustaría recibir de este club en info@museomiju.com</p>
+              <p>Dinos que más te gustaría recibir de este club en contacto@museomiju.com</p>
               <p>¡Haremos de casa visita una experiencia única!</p>
             </div>
           </div>
@@ -332,9 +289,9 @@ Parse.Cloud.afterSave('PhotosEvent', function(request) {
       console.log("Sending email to user: " + userEmail);
   
       mail.send({
-          from: "tusrecuerdos@museomiju.com",
+          from: "clubdeltiotemo@museomiju.com",
           to: userEmail,
-          subject: 'Museo MIJU | ¡Regístrate!',
+          subject: 'Museo MIJU | ¡Regístrate o inicia sesión al club del tío temo para ver tu foto!',
           html: html
       }, function(req1, res1){
           console.log('Welcome email from Miju to ' + userEmail + ' sent.');

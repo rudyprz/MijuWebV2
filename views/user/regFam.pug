@@ -1,8 +1,6 @@
 extends ../layouts/layout
 
 block content
-  include ../partials/navbar
-  include ../partials/nav
   #wrapper
     #backToTop.fixed-action-btn
       a.btn-floating.btn-large
@@ -30,18 +28,18 @@ block content
                 .input-field
                   select#parentesco
                     option(value='' disabled='' selected='' required) Parentesco*
-                    option(value='Esposo') Esposo(a)
-                    option(value='Hijo') Hijo(a)
-                    option(value='Nieto') Nieto(a)
-                    option(value='Sobrino') Sobrino(a)
-                    option(value='Hermano') Hermano(a)
-                    option(value='Primo') Primo(a)
-                    option(value='Cuñado') Cuñado(a)
-                    option(value='Suegro') Suegro(a)
+                    option(value='Esposo(a)') Esposo(a)
+                    option(value='Hijo(a)') Hijo(a)
+                    option(value='Nieto(a)') Nieto(a)
+                    option(value='Sobrino(a)') Sobrino(a)
+                    option(value='Hermano(a)') Hermano(a)
+                    option(value='Primo(a)') Primo(a)
+                    option(value='Cuñado(a)') Cuñado(a)
+                    option(value='Suegro(a)') Suegro(a)
                     option(value='Padre') Padre
                     option(value='Madre') Madre
-                    option(value='Abuelo') Abuelo(a)
-                    option(value='Tío') Tío(a)
+                    option(value='Abuelo(a)') Abuelo(a)
+                    option(value='Tío(a)') Tío(a)
                     option(value='Otro') Otro
               .row
                 .input-field
@@ -99,11 +97,11 @@ block additional_scripts
              "mail": mail},
            success:function(response){
             toastr.success("Has inscrito correctamente a tu pariente.");
-            window.location.href = "/registrar-familiar";
+            window.location.href = "/ver-mis-recuerdos";
            },
            error:function(response){
              toastr.error("Hubo un error en la inscripción, intenta nuevamente.");
-             window.location.href = "/registrar-familiar";
+             window.location.href = "/ver-mis-recuerdos";
            }
          });
       }

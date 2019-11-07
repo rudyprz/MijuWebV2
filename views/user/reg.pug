@@ -1,8 +1,6 @@
 extends ../layouts/layout
 
 block content
-  include ../partials/navbar
-  include ../partials/nav
   #wrapper
     #backToTop.fixed-action-btn
       a.btn-floating.btn-large
@@ -16,9 +14,11 @@ block content
           br
           hr
           p.cv(style="font-size:25px") Regístrate para poder bajar y compartir tus fotos con los Transformers
+          p.s1 ¿Ya eres sobrino del Tío Temo?
+            a(style='color: #009949; font-size: 18px', href="/login")
+              p.cv2 Inicia Sesión
           .row
             form#sign.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action="/reg" method="post")
-              p.bd Registro
               .row
                 .input-field
                   input#name.validate(type='text' required)
@@ -52,12 +52,11 @@ block content
               p
                 label
                   input.filled-in(type='checkbox' checked='checked')
-                  span.cv2
-                    u Acepto el aviso de privacidad
+                  span.cv2 Acepto el aviso de privacidad
                 br
                 label
                   input.filled-in(type='checkbox' checked='checked')
-                  span.cv2 Estoy de acuerdo en recibir avisos y promociones de MIJU
+                  span.cv2 Estoy de acuerdo en recibir avisos y promociones del Club del Tío Temo
               p.cv2
                 u
                   | Más adelante podrás agregar a los miembros de tu familia en tu perfil

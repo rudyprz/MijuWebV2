@@ -2,16 +2,16 @@ extends ../layouts/layout
 
 mixin pic(img,id)
   -var url=img.url()
-  .col.s12.m10.l6.offset-m1(id= url)
+  .col.s12.m6.l4.offset-m1.center(id= url)
     img#image.center(src=url)
-    button.share-button(onclick='sharing("' + url + '")') 
+    button.s4.m4.share-button.waves-effect.waves-light(style="border: none; padding: 5px; border-radius: 10px;", onclick='sharing("' + url + '")') 
       i.fas.fa-share-alt.fa-cog
-      | Compartir Recuerdo
-    a(href=url download)
-      button.download-button
+      | COMPARTIR
+    a.l4(href=url download)
+      button.download-button.waves-effect.waves-light(style="border: none; padding: 5px; border-radius: 10px;")
         i.fas.fa-download.fa-cog
-        | Descargar Recuerdo
-    p.blueP.share-web
+        | DESCARGAR
+    p.l4.blueP.share-web
       | Compartir en:
       tab2
       a(href='https://facebook.com/sharer.php?u=' + url, target='_blank')
@@ -19,52 +19,153 @@ mixin pic(img,id)
       tab1
       a(href='https://twitter.com/intent/tweet?text=Mi recuerdo MIJU&url=' + url, target='_blank')
         i.fab.fa-twitter.fa-cog
-      form#delete(action='/delete' method='post' value=id)
-        button#idb.blueP(onclick='myFunction("'+ id +'")', value=id)
-          i.fas.fa-times.fa-cog
-          | borrar recuerdo
+      form#delete.l4(action='/delete' method='post' value=id)
+        button#idb.waves-effect.waves-light(style="font-family: 'PlantinStd'; font-size: 14px; border: none; padding: 5px; border-radius: 10px; background-color: #FF5647; color: white", onclick='myFunction("'+ id +'")', value=id)
+          i.fas.fa-times.fa-cog(style="color: white!important")
+          | BORRAR
+
+mixin perfil(name, id, gender, birthdate, phone)
+  .row
+    .col.s12.m8.l8.offset-l2.offset-m2.center
+      .row
+        form#modUser.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action="/edit" method="post")
+          br
+          .row
+            .input-field
+              input#username.validate(type='email' value=id disabled)
+              label(for='username') Tu Correo
+            a.waves-effect.waves-light.btn.col.s6.m6.l6(style="margin-top: 1.5em", href='') CAMBIAR CONTRASEÑA
+          .row
+            .input-field
+              input#name.validate(type='text' value=name required)
+              label(for='name') Tu Nombre
+          .row
+              input#fecha.datepicker(type='text' value=birthdate required)
+              label(for='fecha') Tu Fecha de Nacimiento
+          .row
+            .input-field
+              select#sex
+                option(value=gender disabled='' selected=gender required) #{gender}
+                option(value='Masculino') Masculino
+                option(value='Femenino') Femenino
+                option(value='Otro') Otro
+          .row
+            .input-field
+              input#phone.validate(type='text' value=phone)
+              label(for='phone') Tu teléfono
+          button.btn-large.waves-effect.waves-light.rounded-button.gr(type='submit')
+            | GUARDAR CAMBIOS
+      .row
+        form#modPass.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action="/editPass" method="post")
+          br
+          .row
+            .input-field
+              input#pass.validate(type='password' required)
+              label(for='pass') Nueva Contraseña
+          .row
+            .input-field
+              input#passVal.validate(type='password' required)
+              label(for='passVal') Confirmar Contraseña
+          button.btn-large.waves-effect.waves-light.rounded-button.gr(type='submit')
+            | CAMBIAR CONTRASEÑA
+
+mixin familiares(gender, name, relation, birthdate, mail, idf)
+  tr 
+    td= name
+    td= gender
+    td= relation
+    td= birthdate
+    td= mail  
+    td= ''
+      form#deleteFam(action='/deleteFam' method='post' value=mail)
+        button#ide.waves-effect.waves-light(style="background-color: #FF5647; border: none; border-radius: 100%", onclick='delFam("'+ mail +'")', value=mail)
+          i.fas.fa-times.fa-cog(style="color: white!important; padding: 0")
 
 block content
-  include ../partials/navbar
-  include ../partials/nav
+  include ../partials/navbarUser
+
   #wrapper
     #backToTop.fixed-action-btn
       a.btn-floating.btn-large
         i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
-    #photos
-      .row.center
-        h2 ¡Buen día #{name}!
-        span.error #{error}
-        .col.right
+    #table
+      #photos(style="padding-top: 0")
+        .row.center
+          h2 ¡Buen día #{name}!
+          h4 ¡Descarga y/o Comparte tus Recuerdos!
+          span.error #{error}
+        .row
+          each photo in photos
+            if photo.id
+              -var idx = photo.id
+            else 
+              -var idx = "Error al obtener el ID"
+            if photo.get("image1")
+              -var img = photo.get("image1")
+            else 
+              -var img = "Aún no tienes fotos asociadas"
+            +pic(img,idx)
+
+      #profile
+        .row.center
+          each prof in profile
+            if prof.get("gender")
+              -var gender = prof.get("gender")
+            else
+              -var gender = "Género no definido"
+            if prof.get("birthdate")
+              -var birthdate = prof.get("birthdate")
+            else
+              -var birthdate = "Fecha de nacimento no definida"
+            if prof.get("phone")
+              -var phone = prof.get("phone")
+            else
+              -var phone = "Teléfono no definido"
+            +perfil(name, id, gender, birthdate, phone)
+
+      #relatives
+        .row.center
+          .col.s8.m10.l10.offset-m1.offset-l1
+            table.striped
+              thead
+                tr
+                  th Nombre
+                  th Género
+                  th Relación
+                  th Cumpleaños
+                  th Correo electrónico
+                  th Acciones
+              tbody
+                each fam in relatives
+                  if fam.get("gender")
+                      -var genero = fam.get("gender")
+                  else
+                    //- Validate gender
+                    -var genero = "Género no definido"
+                  if fam.get("name")
+                      -var nombre = fam.get("name")
+                  else
+                    //- Validate name
+                    -var nombre = "Nombre no definido"
+                  if fam.get("relation")
+                      -var relacion = fam.get("relation")
+                  else
+                    //- Validate relation
+                    -var relacion = "Relación no definida"
+                  if fam.get("birthdate")
+                      -var cumple = fam.get("birthdate")
+                  else
+                    //- Validate birthdate
+                    -var cumple = "Cumpleaños no definido"
+                  if fam.get("mail")
+                    -var mail = fam.get("mail")
+                  else
+                    //- Validate mail
+                    -var mail = "Correo no definido"
+                  -var idf = fam.get("objectId")
+                  +familiares(genero, nombre, relacion, cumple, mail, idf)
+        .row.center
           a.waves-effect.waves-light.btn(href='/registrar-familiar') REGISTRAR FAMILIAR
-      .row
-        each photo in photos
-          if photo.id
-            -var idx = photo.id
-          else 
-            -var idx = "Error al obtener el ID"
-          if photo.get("image1")
-            -var img = photo.get("image1")
-          else 
-            -var img = "Aún no tienes fotos asociadas"
-          +pic(img,idx)
-      .row
-        .col.s12.m10.l6.offset-m1.offset-l3
-          .card.blue.p-1.rounded-card
-            .card-content.white-text
-              img.center(src='img/tiotemo-red-card@2x.png' alt='Tio Temo')
-              p.content.center Comparte las fotos que te hemos tomado
-              br
-              p.cv Selecciona tu red social
-               br
-               br
-               a(href='http://fb.com')
-                  i.fab.fa-facebook.fa-cog1.fa-3x
-               tab4
-               a(href='http://instagram.com')
-                  i.fab.fa-instagram.fa-cog1.fa-3x
-            .card-action.center
-              a.waves-effect.waves-light.btn.rounded-button(href='http://fb.com') COMPARTIR
 
 block additional_scripts
   script(type='text/javascript').
@@ -92,6 +193,106 @@ block additional_scripts
         });
       }
     }
+
+    function delFam(idform){
+      var id = idform;
+      console.log(id);
+      if(id ==  ""){
+        toastr.warning('Error al eliminar el familiar.');
+      }else{
+        var form_data = new FormData();
+        form_data.append("id", id);
+        var request = $.ajax({
+          url: "/deleteFam",
+          method: "POST",
+          data: {
+            "id": id},
+          success:function(response){
+            toastr.success("Registro eliminado correctamente.");
+            window.location.href = "/ver-mis-recuerdos";
+          },
+          error:function(response){
+            toastr.error("Hubo un error al eliminar tu registro, intenta nuevamente.");
+            window.location.href = "/ver-mis-recuerdos";
+          }
+        });
+      }
+    }
+
+    $("#modPass").submit(function(e){
+      e.preventDefault();
+      var user = $('#username').val();
+      var pass = $('#pass').val();
+      var passVal = $('#passVal').val();
+      console.log(pass);
+      console.log(passVal);
+      if(pass == passVal){
+        var request = $.ajax({
+          url: "/editPass",
+          method: "POST",
+          data: {
+            "username": user,
+            "password": pass
+          },
+          success:function(response){
+            console.log("response");
+            successToast("Has modificado correctamente tu contraseña.");
+            window.location.href = "/login";
+          },
+          error:function(response){
+            if(response.responseJSON){
+              console.log(response.responseJSON.message);
+              errorToast("Hubo un error, intenta nuevamente más tarde");
+            }
+            else{
+              console.log(response.responseText);
+              errorToast("Hubo un error, intenta nuevamente más tarde");
+            }
+          }
+        });
+      }else{
+        toastr.warning('No coinciden las contraseñas');
+      }  
+    });
+
+    $("#modUser").submit(function(e){
+      e.preventDefault();
+      loadingToast("Guardando información");
+      var user = $('#username').val();
+      var name = $('#name').val();
+      var fecha = $('#fecha').val();
+      var gender = $('#sex').val();
+      var phone = $('#phone').val();
+        
+      var request = $.ajax({
+        url: "/edit",
+        method: "POST",
+        data: {
+          "username": user,
+          "name": name,
+          "fecha": fecha,
+          "gender": gender,
+          "phone": phone
+        },
+        success:function(response){
+          closeToast();
+          console.log("response");
+          successToast("Has modificado correctamente tu perfil.");
+          window.location.href = "/ver-mis-recuerdos";
+        },
+        error:function(response){
+          closeToast();
+          if(response.responseJSON){
+            console.log(response.responseJSON.message);
+            errorToast("Hubo un error, intenta nuevamente más tarde");
+          }
+          else{
+            console.log(response.responseText);
+            errorToast("Hubo un error, intenta nuevamente más tarde");
+          }
+        }
+      });
+    });
 
     function sharing(img) {
       if (navigator.share){
