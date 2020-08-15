@@ -2,24 +2,18 @@ extends ../layouts/layout
 
 block content
   #wrapper
-    #backToTop.fixed-action-btn
-      a.btn-floating.btn-large
-        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
-    #qr
-      .row
-        .col.s12.m8.l8.offset-l2.offset-m2
-          .card.grey.lighten-3.rounded-card
-            .card-content.dark-text
-              img.center2(src='img/Grupo333.svg' alt='Tio Temo')
-              p.content.center Recupera tu contraseña
-              .row
-                form#mail.col.s12(method="post" action="/sendQuote2")
-                  .row.center
-                    .input-field.col.s6.m6.l6.offset-s3.offset-m3.offset-l3
-                      input#quoteMail.validate(type='email' name ='quoteMail' required)
-                      label(for='quoteMail') ejemplo@mail.com
-                      span.helper-text(data-error='Favor de llenar el campo' data-success='¡Correcto!') Ingresa tu correo electrónico con el que te registraste
-                      br
-                      br
-                      button.btn-large.waves-effect.waves-light.rounded-button(style="padding: 0 10px!important", type='submit')
-                        | RECUPERAR
+    .row
+      .col.s12.m8.l8.offset-l2.offset-m2.center
+            img(src='img/Grupo333.svg' alt='Tio Temo')
+            p.content.center(style='font-size: 1.2em !important; color: #00A660 !important; font-weight: bold !important') Recupera tu contraseña
+            .row
+              form#mail.col.s12(method="post" action="/sendQuote2")
+                .row.center
+                  .input-field.col.s6.m6.l6.offset-s3.offset-m3.offset-l3
+                    input#quoteMail.validate(type='email' name ='quoteMail' required)
+                    label(style='font-size: 1.2em !important' for='quoteMail') ejemplo@mail.com
+                    span.helper-text(style='font-size: 1.1em !important' data-error='Favor de llenar el campo' data-success='¡Correcto!') Ingresa tu correo electrónico con el que te registraste
+                    br
+                    br
+                    button.btn-large.waves-effect.waves-light(style="padding: 0 10px!important", type='submit')
+                      | RECUPERAR

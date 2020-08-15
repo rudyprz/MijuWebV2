@@ -243,12 +243,12 @@ Parse.Cloud.afterSave('PhotosEvent', function(request) {
       <body>
         <div style="width: 80%; margin:auto">
           <div class="row margin-top-50">
-            <div class="col s12 m2"><img src="https://museomiju.com/img/emails/logo.png" alt="MIJU" style="width:100%"/></div>
+            <div class="col s12 m2"><img src="https://club.museomiju.com/img/emails/logo.png" alt="MIJU" style="width:100%"/></div>
           </div>
           <div class="row" id="thanks">
             <div class="col s12 m6 offset-m3 center">
-              <h5>¡Gracias por tomarte la foto en nuestra exhibición de Transformers!</h5>
-              <h6>Para tener acceso a la foto, entra a www.museomiju.com/reg</h6>
+              <h5>¡Gracias por tomarte la fotos en nuestra exhibición de Transformers!</h5>
+              <h6>Para tener acceso a la fotos, entra a www.museomiju.com/mi-perfil-registro/ y </h6>
             </div>
           </div>
           <div class="greySquare padding-20">
@@ -280,7 +280,7 @@ Parse.Cloud.afterSave('PhotosEvent', function(request) {
               <p>¡Haremos de casa visita una experiencia única!</p>
             </div>
           </div>
-          <div id="img"><img src="https://museomiju.com/img/emails/welcome.png" alt="MIJU" style="width:100%"/></div>
+          <div id="img"><img src="https://club.museomiju.com/img/emails/welcome.png" alt="MIJU" style="width:100%"/></div>
         </div>
       </body>
     </html>

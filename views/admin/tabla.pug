@@ -1,29 +1,35 @@
 extends ../layouts/layout
 
-mixin contact(nombre, correo, tel, sexo, fecha)
+mixin contact(nombre, correo, tel, sexo, fecha, created)
   tr
     td= nombre
     td= correo
     td= tel
     td= sexo
     td= fecha
+    td= created
 
-mixin contactNR(correo)
+mixin contactNR(correo, created, hidden, urlImg)
   tr
     td= correo
+    td= created
+    td= hidden
+    td= urlImg
 
-mixin contactNS(correoE)
+mixin contactNS(correoE, created)
   tr
     td= correoE
+    td= created
 
-mixin familiares(gender, name, relation, birthdate, mail, relative)
+mixin familiares(gender, name, relation, birthdate, mail, relative, created)
   tr 
     td= relative
     td= name
     td= gender
     td= relation
     td= birthdate
-    td= mail   
+    td= mail
+    td= created   
 
 
 block content
@@ -46,6 +52,7 @@ block content
                   th Teléfono
                   th Género
                   th Cumpleaños
+                  th Fecha de Registro
               tbody
                 each prospect in prospects
                   //-Validates values exist in the object
@@ -74,7 +81,8 @@ block content
                   else
                     //- Validate birthdate
                     -var fecha = "Cumpleaños no definido"
-                  +contact(name, mail, phone, sexo, fecha)
+                  -var created = prospect.get("createdAt")
+                  +contact(name, mail, phone, sexo, fecha, created)
         .row.center
           button.waves-effect.waves-light.btn(onclick="exportTableToExcel('registred')") Exportar Tabla a Excel
 
@@ -85,7 +93,10 @@ block content
             table#registredNO.striped
               thead
                 tr
-                  th Correo electrónico
+                  th email
+                  th createdAt
+                  th hidden
+                  th image1
               tbody
                 each prospect in prospectsNR
                   if prospect.get("email")
@@ -93,7 +104,11 @@ block content
                   else
                     //- Validate mail
                     -var mail = "Correo no definido"
-                  +contactNR(mail)
+                  -var created = prospect.get("createdAt")
+                  -var hidden = prospect.get("hidden")
+                  -var img = prospect.get("image1")
+                  -var urlImg = img.url()
+                  +contactNR(mail, created, hidden, urlImg)
 
         .row.center
           button.waves-effect.waves-light.btn(onclick="exportTableToExcel('registredNO')") Exportar Tabla a Excel
@@ -106,6 +121,7 @@ block content
               thead
                 tr
                   th Correo electrónico
+                  th Fecha de Registro
               tbody
                 each prospect in prospectsNS
                   //-Validates values exist in the object
@@ -114,7 +130,8 @@ block content
                   else
                     //- Validate name
                     -var correoE = "Error al obtener el correo"
-                  +contactNS(correoE)
+                  -var created = prospect.get("createdAt")
+                  +contactNS(correoE, created)
 
         .row.center
           button.waves-effect.waves-light.btn(onclick="exportTableToExcel('registredNS')") Exportar Tabla a Excel                        
@@ -132,6 +149,7 @@ block content
                   th Relación
                   th Cumpleaños
                   th Correo electrónico
+                  th Fecha de Registro
               tbody
                 each fam in familia
                   if fam.get("gender")
@@ -164,7 +182,8 @@ block content
                   else
                     //- Validate register
                     -var registrante = "Error al obtener el registrante"
-                  +familiares(genero, nombre, relacion, cumple, mail, registrante)
+                  -var created = fam.get("createdAt")
+                  +familiares(genero, nombre, relacion, cumple, mail, registrante, created)
 
         .row.center
           button.waves-effect.waves-light.btn(onclick="exportTableToExcel('registredFam')") Exportar Tabla a Excel
@@ -174,12 +193,12 @@ block additional_scripts
   script(type='text/javascript').
     function exportTableToExcel(tableID, filename = ''){
         var downloadLink;
-        var dataType = 'application/vnd.ms-excel;charset=UTF-8,%EF%BB%BF';
+        var dataType = 'text/csv;charset=UTF-8,%EF%BB%BF';
         var tableSelect = document.getElementById(tableID);
         var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
         
         // Specify file name
-        filename = filename?filename+'.xls':'excel_data.xls';
+        filename = filename?filename+'.csv':'excel_data.csv';
         
         // Create download link element
         downloadLink = document.createElement("a");

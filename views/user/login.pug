@@ -2,12 +2,9 @@ extends ../layouts/layout
 
 block content
   #wrapper
-    #backToTop.fixed-action-btn
-      a.btn-floating.btn-large
-        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
     #login
-      .row
-        .col.s12.m8.l8.offset-l2.offset-m2.center
+      .row(style="border: solid 2px lightgrey; border-radius:10px")
+        .col.s12.m6.l6.center
           img.center(src="img/Grupo332.svg" alt="Logo Tio Temo")
           br
           hr
@@ -24,12 +21,15 @@ block content
                   input#password.validate(type='password' name='password' required)
                   label(for='password') Contraseña
               a(href="/recuperar")
-                p.cv2 ¿No recuerdas tu contraseña?
+                p(style='font-size: 1.1em !important') ¿No recuerdas tu contraseña?
                   u(style='color: #009949; text-decoration: none')  RECUPÉRALA
               br
-              button.btn-large.waves-effect.waves-light.rounded-button(type='submit')
+              button.btn-large.waves-effect.waves-light(type='submit')
                 | INICIA SESIÓN
-              p.s1 ¿Aún no eres sobrino del Tío Temo?
+              p ¿Aún no eres sobrino del Tío Temo?
               a(href="/reg")
                 p.s2
-                  u(style='color: #009949; text-decoration: none; font-family: "PlantinStd";') Regístrate
+                  u(style='color: #009949; text-decoration: none; font-family: "Montserrat";') Regístrate
+        .col.s12.m6.l6(style="background-color: #195FA7; height: 70vw; border-radius: 0px 10px 10px 0px")
+          img(src="img/camara.png" alt="Camara" style="max-width: 80%; margin-left:4em")
+          img(src="img/camion-tonka@2x.png" alt="Camion" style="max-width: 80%")

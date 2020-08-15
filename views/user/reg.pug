@@ -2,20 +2,17 @@ extends ../layouts/layout
 
 block content
   #wrapper
-    #backToTop.fixed-action-btn
-      a.btn-floating.btn-large
-        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
     #reg
-      .row
-        .col.s12.m8.l8.offset-l2.offset-m2.center
+      .row(style="border: solid 2px lightgrey; border-radius:10px")
+        .col.s12.m6.l6.center
           br
           br
           img.center2(src="img/Grupo332.svg" alt="Logo Tio Temo")
           br
           hr
-          p.cv(style="font-size:25px") Regístrate para poder bajar y compartir tus fotos con los Transformers
+          p(style="font-size:25px") Regístrate para poder bajar y compartir tus fotos con los Transformers
           p.s1 ¿Ya eres sobrino del Tío Temo?
-            a(style='color: #009949; font-size: 18px', href="/login")
+            a(style='color: #009949; font-size: 22px', href="/login")
               p.cv2 Inicia Sesión
           .row
             form#sign.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action="/reg" method="post")
@@ -32,7 +29,7 @@ block content
                   label(for='username') ¿Cuál es tu correo electrónico?*
               .row
                 .input-field
-                  input#fecha(type='text' placeholder="dd/mm/aaaa")
+                  input#fecha.datepicker(type='text' placeholder="dd-mm-aaaa")
                   label(for='fecha') Fecha de nacimiento
               .row
                 .input-field
@@ -48,8 +45,8 @@ block content
                     option(value='' disabled='' selected='') ¿Cuál es tu género?
                     option(value='Masculino') Masculino
                     option(value='Femenino') Femenino
-                    option(value='Otro') Otro
-              p
+                    option(value='Prefiero no definir') Prefiero no definir
+              p(style='text-align: left !important')
                 label
                   input.filled-in(type='checkbox' checked='checked')
                   span.cv2 Acepto el aviso de privacidad
@@ -57,20 +54,20 @@ block content
                 label
                   input.filled-in(type='checkbox' checked='checked')
                   span.cv2 Estoy de acuerdo en recibir avisos y promociones del Club del Tío Temo
-              p.cv2
-                u
-                  | Más adelante podrás agregar a los miembros de tu familia en tu perfil
-              button.btn-large.waves-effect.waves-light.rounded-button.gr(type='submit' name='action')
+              button.btn-large.waves-effect.waves-light.gr(type='submit' name='action')
                 | INSCRÍBEME
+        .col.s12.m6.l6(style="background-color: #195FA7; height: 100vw; border-radius: 0px 10px 10px 0px")
+          img(src="img/juguete-avion@2x.png" alt="Avion" style="max-width: 100%;")
+          img(src="img/Grupo420@2x.png" alt="Juguete" style="max-width: 100%")
 block additional_scripts
   script(type='text/javascript').
   
     $("#sign").submit(function(e){
       e.preventDefault();
       loadingToast("Guardando información");
-      var user = $('#username').val();
+      var user = $('#username').val().toLowerCase();
       var pass = $('#pass').val();
-      var mail = $('#username').val();
+      var mail = $('#username').val().toLowerCase();
       var name = $('#name').val();
       var fecha = $('#fecha').val();
       var gender = $('#sex').val();
@@ -167,4 +164,11 @@ block additional_scripts
         };
       };
       this.value = output;
+    });
+
+    $(document).ready(function(){
+      var yearnow = new Date().getFullYear();
+      $(".datepicker").datepicker({
+        yearRange: [1930, yearnow],
+      });
     });

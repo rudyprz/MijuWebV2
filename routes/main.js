@@ -1,7 +1,7 @@
 var express     = require('express');
 var Parse       = require("parse/node");
 var Mailgunny   = require('mailgunny');
-// var Mailchimp = require("mailchimp-api-v3");
+var Mailchimp = require("mailchimp-api-v3");
 
 var router      = express.Router();
 
@@ -62,7 +62,7 @@ var functions = {
   },
   signIn: function(req, res, next){
     var context = {};
-    Parse.User.logIn(req.body.username, req.body.password, {
+    Parse.User.logIn(req.body.username.toLowerCase(), req.body.password, {
       success: function(user) {
         req.session.user = user;
         req.session.name = user.get("name");
@@ -325,6 +325,27 @@ var functions = {
           objectId: user.id
         }
         res.status(200).send(response);
+
+        var createdUser = user.get("createdAt");
+        var mailchimp = new Mailchimp('6a4a6701c359167ff97b96c569bd556a-us20');
+
+        mailchimp.post('/lists/49b4a474cb/members', {
+            email_address : form.username,
+            status : 'subscribed',
+            merge_fields : {
+              FNAME : form.name,
+              PHONE : form.phone,
+              MMERGE5 : form.gender,
+              MMERGE6 : form.fecha,
+              MMERGE7 : createdUser
+            }
+        })
+        .then(function(results) {
+            console.log('Email ('+ form.username +') was subscribed into Mailchimp successfully');
+        })
+        .catch(function(err) {
+            console.log(err);
+        }) 
       },
       error: function (obj, error) {
         console.log("---------------------------------------------");
@@ -424,7 +445,7 @@ var functions = {
             }, function(reque, resp){
               console.log('Email from MIJU to Client ('+ mailAddress +') was sent.');
 
-             /* var mailchimp = new Mailchimp('6a4a6701c359167ff97b96c569bd556a-us20');
+              var mailchimp = new Mailchimp('6a4a6701c359167ff97b96c569bd556a-us20');
 
               mailchimp.post('/lists/40be8a15fb/members', {
                   email_address : mailAddress,
@@ -435,7 +456,7 @@ var functions = {
               })
               .catch(function(err) {
                   console.log(err);
-              }) */
+              }) 
             });
               
         });
@@ -505,6 +526,7 @@ var functions = {
       query.first({
         success: function(object) {
           //console.log(object);
+          //const profileImg = new Parse.File("profile.png", req.body.avatar, "image/png");
           object.set("name", req.body.name);
           object.set("birthdate", req.body.fecha.replace(/ /g, ""));
           object.set("gender", req.body.gender);
@@ -526,6 +548,37 @@ var functions = {
     }else{
       console.log(req.body.username);
       context = {error: "Hubo un error al modificar perfil. Intenta de nuevo por favor."};
+      res.redirect('/ver-mis-recuerdos');
+    }
+  },
+  editProfile: function(req, res, next){
+    var context = {};
+    var query = new Parse.Query(User);
+    query.equalTo("username", req.body.username);
+    if(req.body.username != null){
+      console.log(req.body);
+      query.first({
+        success: function(object) {
+          //console.log(object);
+          const profileImg = new Parse.File(req.body.name, { base64: req.body.avatar });
+          object.set("avatar", profileImg);
+          Parse.Object.saveAll([object], { useMasterKey: true })
+        /*  object.save({useMasterKey : true}, {
+            success: function(object) {
+              console.log("Perfil Modificado Correctamente");
+            }, error: function(object, error){
+              console.log("Error: " + error);
+            }
+          }); */
+          //console.log(object)
+          res.send({status:"Success"});
+        },error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      })
+    }else{
+      console.log(req.body.username);
+      context = {error: "Hubo un error al modificar tu avatar. Intenta de nuevo por favor."};
       res.redirect('/ver-mis-recuerdos');
     }
   },
@@ -660,7 +713,7 @@ var functions = {
             context.prospects = prospects;
             var prospectQuery2 = new Parse.Query(PhotosEvent);
             prospectQuery2.exists('image1');
-            prospectQuery2.limit(20000);
+            prospectQuery2.limit(50000);
             prospectQuery2.find({
               success: function(prospectsNR){
                 console.log(prospectsNR.length + " contactos no registrados.");
@@ -732,6 +785,7 @@ router.get('/tabla-usuarios', functions.contacts);
 router.get('/emails', functions.emails);
 
 router.post('/edit', functions.edit);
+router.post('/editProfile', functions.editProfile);
 router.post('/delete', functions.delete);
 router.post('/deleteFam', functions.deleteFam);
 router.post('/editPass', functions.editPass);

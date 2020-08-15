@@ -25,7 +25,7 @@ if (!databaseUri) {
 APP_ID = 'BrounieApp';
 MASTER_KEY = "C4suYZKkyRMYPGR7fEae";
 APP_NAME = "Museo MIJU";
-serverURL = "https://miju.herokuapp.com/";
+serverURL = "http://localhost:8080/parse";
 
 TAG = APP_ID + ":" + os.hostname();
 var dd_options = {
@@ -111,8 +111,8 @@ app.use(session({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit:50000 }));
 //app.use(favicon(path.join(__dirname, 'public/img', 'miju.png')));
 //app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(favicon(path.join(__dirname, 'public/img', 'Grupo333.svg')))

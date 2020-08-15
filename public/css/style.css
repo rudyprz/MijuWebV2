@@ -235,7 +235,7 @@
   text-align: justify; }
 
 .mod{
-  font-family: 'PlantinStd';
+  font-family: 'Montserrat';
   font-size: 20px;
 }
 
@@ -287,6 +287,27 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Italic';
+  src: url('fonts/Montserrat-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('fonts/Montserrat-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #backToTop .btn-floating.btn-large {
   background-color: #00A660; }
 
@@ -319,7 +340,7 @@
     color: white;
     font-size: calc(1em + .5vw);
     padding-right: 20px;
-    font-family: "ProximaNovaBlack";
+    font-family: "Montserrat-Bold";
   }
   #navbarAdmin ul,li {
     color: white;
@@ -336,7 +357,7 @@
   top: -100vh;
   width: 100%;
   position: absolute;
-  font-family: "PlantinStd-Italic"; }
+  font-family: "Montserrat-Italic"; }
   #nav #nav-wrapper {
     position: relative;
     height: 100%; }
@@ -351,7 +372,7 @@
       font-size: 18px;
       padding-left: 6vh; }
     #nav #nav-wrapper #menu {
-      font-family: "PlantinStd";
+      font-family: "Montserrat";
       font-size: 28px; }
     #nav #nav-wrapper #it {
       color: #3B3836;
@@ -362,7 +383,7 @@
       background-color: #00A660;
       color: white;
       font-size: 14px;
-      font-family: "PlantinStd"; }
+      font-family: "Montserrat"; }
 
 #yellowSection {
   padding-top: 100px;
@@ -377,13 +398,13 @@
   #yellowSection img.title {
     width: 100%; }
   #yellowSection .title {
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
     font-size: 20px; }
 
 #whiteSectionA {
   background-color: white;
   padding: 20px;
-  font-family: "PlantinStd";
+  font-family: "Montserrat";
  }#whiteSectionA img.bt{
   bottom: 0;
   align-self: flex-end;
@@ -400,13 +421,13 @@
     font-size: 24px;
   }
   #whiteSectionA a{
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     background-color: #00A660;
     font-size: calc(.5em + .5vw);
   }
   #whiteSectionA span{
     font-size: 16px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
   }
   #whiteSectionA .iris{
     background-image: url(../img/Grupo424@2x.png);
@@ -425,7 +446,7 @@
     text-align: left;
   } #whiteSectionA .it{
     font-size: 18px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
   } #whiteSectionA .hg{
     height: 490px !important;
   }
@@ -444,17 +465,17 @@
   #greySection .content {
     padding-top: 4px;
     font-size: 26px;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
   }
   #greySection a{
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: calc(.5em + .5vw);
     background-color: white;
     color: black;
   }
   #greySection span, .cv{
     font-size: 18px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
   }
 
   #whiteSectionB {
@@ -462,7 +483,7 @@
     padding: 20px;
     height: 100vh;
     min-height: 450px;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
   }
   #whiteSectionB img.center{
     display: block;
@@ -475,7 +496,7 @@
     color: black;
     font-size: calc(.5em + .5vw);
     background-color: white;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
   }
   #whiteSectionB img.center2{
     display: block;
@@ -489,11 +510,11 @@
     font-size: 26px;
   }
   #whiteSectionB span{
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
     font-size: 18px;
   }
   #whiteSectionB label, input{
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: 15px;
   }
   #whiteSectionB .pd{
@@ -501,17 +522,17 @@
   }
   #whiteSectionB .cv{
     font-size: 10px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
     color: #3B3836;
     opacity: .5;
   }
   #whiteSectionB .cv2{
     font-size: 10px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
     color: black;
   }#whiteSectionB .blackText{
     font-size: 14px;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     color: black;
   }
 
@@ -523,7 +544,7 @@
     padding: 15px;
   }
   #modal1 span{
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
     font-size: 18px;
   }
   #modal2 img.center{
@@ -550,28 +571,28 @@
   #login button{
     background-color: #00A660;
     color: white;
-    font-family: "PlantinStd";
-    font-size: calc(.5em + .5vw);
+    font-family: "Montserrat";
+    font-size: 1.2em !important;
   }
   #login p.bd {
-    font-family: "ProximaNovaBlack";
+    font-family: "Montserrat-Bold";
     font-size: 18px;
     text-align: justify;
     padding-left: 4.5vw;
   }
   #login .cv{
     font-size: 18px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
     color: #3B3836;
   }
   #login input{
-    font-size: 15px;
-    font-family: "PlantinStd";
+    font-size: 1.1em;
+    font-family: "Montserrat";
     color: black !important;
   }
   #login .cv2{
-    font-size: 14px;
-    font-family: "PlantinStd";
+    font-size: 1em;
+    font-family: "Montserrat";
   }
   #login u{
     color: black;
@@ -580,17 +601,17 @@
     color: #3B3836;
     opacity: .5;
     font-size: 23px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
   }
   #login p.s2{
     color: #3B3836;
     font-size: 23px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
     margin-bottom:0;
   }
   #login .error{
     font-size: 15px;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     color: black;
     background-color: #F5BFB0;
   }
@@ -619,27 +640,27 @@
   #reg .btn-large{
     background-color: #00A660;
     color: white;
-    font-family: "PlantinStd";
-    font-size: calc(.5em + .5vw);
+    font-family: "Montserrat";
+    font-size: 1.2em !important;
   }
   #reg p.bd {
-    font-family: "ProximaNovaBlack";
+    font-family: "Montserrat-Bold";
     padding-top: 4px;
     font-size: 16px;
     text-align: justify;
   }
   #reg .cv2, a{
-    font-size: 12px;
-    font-family: "PlantinStd";
-    color: #9b9a99;
+    font-size: .9em;
+    font-family: "Montserrat";
+    color: #3B3836;
   }#reg .input-field, option, .select-dropdown, .dropdown-trigger, label{
-    color: #9b9a99 !important;
-    font-size: 15px;
-    font-family: "PlantinStd";
+    color: #3B3836 !important;
+    font-size: 1.1em !important;
+    font-family: "Montserrat";
   } #reg input{
     color: black;
-    font-size: 15px;
-    font-family: "PlantinStd";
+    font-size: 1.1em;
+    font-family: "Montserrat";
   }
 
   .left{
@@ -652,7 +673,7 @@
     height: 100vh;
     min-height: 450px;
     padding-top: 7%;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
   }
   #qr img.center{
     display: block;
@@ -675,12 +696,12 @@
   #qr .btn-large{
     background-color: #00A660;
     color: white;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: calc(.5em + .5vw);
     padding: 0 0px !important;
   }
   #qr input{
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: 15px;
     text-align: center;
   }
@@ -695,26 +716,26 @@
   #regFam .btn-large{
     background-color: #00A660;
     color: white;
-    font-family: "PlantinStd";
-    font-size: calc(.5em + .5vw);
+    font-family: "Montserrat";
+    font-size: 1.2em !important;
   }
   #regFam p.bd {
-    font-family: "ProximaNovaBlack";
+    font-family: "Montserrat-Bold";
     padding-top: 24px;
     font-size: 16px;
     text-align: justify;
   }
   #regFam .cv2{
-    font-size: 12px;
-    font-family: "PlantinStd";
-    color: #9b9a99;
+    font-size: 1em;
+    font-family: "Montserrat";
+    color: #3B3836;
   }#regFam input{
     color: black;
-    font-size: 15px;
-    font-family: "PlantinStd";
+    font-size: 1.2em;
+    font-family: "Montserrat";
   }#regFam .success{
     font-size: 15px;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     color: black;
     background-color: #BDECB6;
   }
@@ -722,7 +743,7 @@
 
   #photos {
     padding: 20px;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     padding-top: 7%;
   }
   #photos img.center{
@@ -733,27 +754,27 @@
     padding-bottom: 0px;
   }
   #photos h1, h2, h3{
-    font-family: 'ProximaNovaBlack';
+    font-family: 'Montserrat-Bold';
   }
   #photos .content {
     padding-top: 4px;
     font-size: 28px;
   }
   #photos .btn {
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: 14px;
     background-color: #00A660;
     color: white;
   }
   #photos span{
     font-size: 20px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
     color: #3B3836;
   }
   #photos .cv{
     text-align: center;
     font-size: 18px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
     color: #86ABD0;
   }
   #photos .iris{
@@ -777,25 +798,25 @@
   #photos .blueP{
     border-style: none;
     background: transparent;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     color: #6795C4;
     font-size: calc(.7em + .7vw);
   }
   #photos .error{
     font-size: 15px;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     color: black;
     background-color: #F5BFB0;
   }
 
   #table{
-    padding-top: 20vh;
+    padding-top: 12vh;
   }#table th{
-    font-family: 'ProximaNovaBlack';
+    font-family: 'Montserrat-Bold';
     font-size: 16px;
     text-align: center;
   }#table td {
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: 15px;
     text-align: center;
   }#table h4,h1,h2,h3,h6{
@@ -804,28 +825,28 @@
 
   #contacto p.ti{
     padding-top: 2vh;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: 26px;
   } #contacto p{
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: 16px;
     color: white;
   }#contacto .input-field, option, .select-dropdown, .dropdown-trigger, label{
-    color: #9b9a99 !important;
+    color: #3B3836 !important;
     font-size: 15px;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
   } #contacto .btn-large{
     background-color: #00A660;
     color: white;
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: 14px;
   }#contacto p.sm{
-    font-family: "PlantinStd";
+    font-family: "Montserrat";
     font-size: 15px;
     color: black;
   }#contacto p.smit{
     font-size: 10px;
-    font-family: "PlantinStd-Italic";
+    font-family: "Montserrat-Italic";
   }#contacto img.pd{
     padding-top: 5vh;
   }.embed-container {
@@ -860,8 +881,17 @@
     min-height:  0vh;
     }
   #table{
-    padding-top: 20vh;
+    padding-top: 12vh;
    }
+  #table th{
+    font-size: 0.8em;
+  }#table td {
+    font-size: 0.7em;
+  }
+  #navbarAdmin ul li a{
+    font-size: 2em;
+  }
+
   }
 
 @media only screen and (max-device-width: 1366px) {
@@ -883,7 +913,7 @@
 }
 
 #photos .share-button {
-  font-family: "PlantinStd";
+  font-family: "Montserrat";
   font-size: 14px;
   background-color: #00A660;
   color: white;
@@ -894,7 +924,7 @@
 }
 
 #photos .download-button {
-  font-family: "PlantinStd";
+  font-family: "Montserrat";
   font-size: 14px;
   background-color: #00A660;
   color: white;
@@ -902,4 +932,71 @@
 }
 #photos .download-button i{
   color: white!important;
+}
+.container {
+  max-width: 960px;
+  margin: 30px auto;
+  padding: 20px;
+}
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 50px auto;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+  content: "\f303";
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #757575;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+form input[type='email'] {
+  text-transform: lowercase;
 }

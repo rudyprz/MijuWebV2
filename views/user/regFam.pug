@@ -2,16 +2,13 @@ extends ../layouts/layout
 
 block content
   #wrapper
-    #backToTop.fixed-action-btn
-      a.btn-floating.btn-large
-        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
     #regFam
       .row
         .col.s12.m8.l8.offset-l2.offset-m2.center
           .row
             form#regFam.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action='/relatives' method='post')
               span.success #{msg}
-              p.bd Registro de un familiar 
+              p.center(style='color: #00A660 !important; font-size: 1.2em !important; font-weight: bold') ¡Registra un nuevo familiar!
               br
               .row
                 .input-field
@@ -52,7 +49,7 @@ block content
                 .input-field
                   input#mail.validate(type='email' required)
                   label(for='mail') ¿Cuál es su correo electrónico?
-              p
+              p(style='text-align: left !important')
                 label
                   input.filled-in(type='checkbox' checked='checked')
                   span.cv2
@@ -61,7 +58,7 @@ block content
                 label
                   input.filled-in(type='checkbox' checked='checked')
                   span.cv2 Estoy de acuerdo en recibir avisos y promociones de MIJU
-              button.btn-large.waves-effect.waves-light.rounded-button.gr(type='submit')
+              button.btn-large.waves-effect.waves-light.gr(type='submit')
                 | INSCRÍBELO
 
 block additional_scripts

@@ -7,10 +7,13 @@ mixin pic(img,id)
     button.s4.m4.share-button.waves-effect.waves-light(style="border: none; padding: 5px; border-radius: 10px;", onclick='sharing("' + url + '")') 
       i.fas.fa-share-alt.fa-cog
       | COMPARTIR
-    a.l4(href=url download)
-      button.download-button.waves-effect.waves-light(style="border: none; padding: 5px; border-radius: 10px;")
-        i.fas.fa-download.fa-cog
-        | DESCARGAR
+    p(style="color: #00A660") 
+      | Si estas navegando en Safari en iPhone o Mac, aparecerá un ícono 
+      i.fas.fa-arrow-circle-down(style="color: #00A660")
+      | en la parte superior derecha de la ventana del navegador en donde encontrarás tus fotos descargadas.
+    button.download-button.waves-effect.waves-light(style="border: none; padding: 5px; border-radius: 10px;", onclick='downloadFile("' + url + '")')
+      i.fas.fa-download.fa-cog
+      | DESCARGAR
     p.l4.blueP.share-web
       | Compartir en:
       tab2
@@ -24,9 +27,21 @@ mixin pic(img,id)
           i.fas.fa-times.fa-cog(style="color: white!important")
           | BORRAR
 
-mixin perfil(name, id, gender, birthdate, phone)
+mixin perfil(name, id, gender, birthdate, phone, avatar)
+  -var url=avatar
   .row
-    .col.s12.m8.l8.offset-l2.offset-m2.center
+    .col.s12.m8.l8.offset-l2.offset-m2.center  
+      .row
+        form#modAvatar.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action="/editProfile" method="post")
+          .container(style="margin-top:0; margin-bottom:0; padding:0")
+            .avatar-upload
+              .avatar-edit
+                input#imageUpload(type='file', accept='.png, .jpg, .jpeg')
+                label(for='imageUpload')
+              .avatar-preview
+                #imagePreview(style='background-image: url("' + url + '");')
+            button.btn-large.waves-effect.waves-light.gr(type='submit')
+                  | GUARDAR FOTO DE PERFIL       
       .row
         form#modUser.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action="/edit" method="post")
           br
@@ -34,7 +49,6 @@ mixin perfil(name, id, gender, birthdate, phone)
             .input-field
               input#username.validate(type='email' value=id disabled)
               label(for='username') Tu Correo
-            a.waves-effect.waves-light.btn.col.s6.m6.l6(style="margin-top: 1.5em", href='') CAMBIAR CONTRASEÑA
           .row
             .input-field
               input#name.validate(type='text' value=name required)
@@ -53,7 +67,7 @@ mixin perfil(name, id, gender, birthdate, phone)
             .input-field
               input#phone.validate(type='text' value=phone)
               label(for='phone') Tu teléfono
-          button.btn-large.waves-effect.waves-light.rounded-button.gr(type='submit')
+          button.btn-large.waves-effect.waves-light.gr(type='submit')
             | GUARDAR CAMBIOS
       .row
         form#modPass.col.s10.m10.l10.offset-s1.offset-m1.offset-l1(action="/editPass" method="post")
@@ -66,7 +80,7 @@ mixin perfil(name, id, gender, birthdate, phone)
             .input-field
               input#passVal.validate(type='password' required)
               label(for='passVal') Confirmar Contraseña
-          button.btn-large.waves-effect.waves-light.rounded-button.gr(type='submit')
+          button.btn-large.waves-effect.waves-light.gr(type='submit')
             | CAMBIAR CONTRASEÑA
 
 mixin familiares(gender, name, relation, birthdate, mail, idf)
@@ -85,13 +99,10 @@ block content
   include ../partials/navbarUser
 
   #wrapper
-    #backToTop.fixed-action-btn
-      a.btn-floating.btn-large
-        i.large.material-icons(style="padding-right: 1.5vh;") keyboard_arrow_up
     #table
       #photos(style="padding-top: 0")
         .row.center
-          h2 ¡Buen día #{name}!
+          h2(style='color: #00A660 !important') ¡Buen día #{name}!
           h4 ¡Descarga y/o Comparte tus Recuerdos!
           span.error #{error}
         .row
@@ -108,7 +119,13 @@ block content
 
       #profile
         .row.center
+          p.center(style='color: #00A660 !important; font-size: 1.2em !important; font-weight: bold') Ve y/o configura tu Perfil
           each prof in profile
+            if prof.get("avatar")
+              -var avatarImg = prof.get("avatar")
+              -var avatar = avatarImg.url()
+            else
+              -var avatar = "img/tio-temo-codigo-qr.png"
             if prof.get("gender")
               -var gender = prof.get("gender")
             else
@@ -121,11 +138,11 @@ block content
               -var phone = prof.get("phone")
             else
               -var phone = "Teléfono no definido"
-            +perfil(name, id, gender, birthdate, phone)
+            +perfil(name, id, gender, birthdate, phone, avatar)
 
       #relatives
         .row.center
-          .col.s8.m10.l10.offset-m1.offset-l1
+          .col.s12.m10.l10
             table.striped
               thead
                 tr
@@ -294,6 +311,48 @@ block additional_scripts
       });
     });
 
+    $("#modAvatar").submit(function(e){
+      e.preventDefault();
+      loadingToast("Guardando información");
+      var user = $('#username').val();
+      if ($("#imageUpload") && $("#imageUpload")[0].files[0]) {
+        var fname = $("#imageUpload")[0].files[0].name;
+        var reader = new FileReader();
+        reader.readAsDataURL($('#imageUpload')[0].files[0]);
+        reader.onload = function(e) {
+          var request = $.ajax({
+          url: "/editProfile",
+          method: "POST",
+          data: {
+            "username": user,
+            "avatar": e.target.result,
+            "name": fname
+          },
+          success:function(response){
+            closeToast();
+            console.log("response");
+            successToast("Has modificado correctamente tu perfil.");
+          //  window.location.href = "/ver-mis-recuerdos";
+          },
+          error:function(response){
+            closeToast();
+            if(response.responseJSON){
+              console.log(response.responseJSON.message);
+              errorToast("Hubo un error, intenta nuevamente más tarde");
+            }
+            else{
+              console.log(response.responseText);
+              errorToast("Hubo un error, intenta nuevamente más tarde");
+            }
+          }
+        }); 
+        }
+      } else {
+        errorToast("No has elegido una nueva imagen para tu avatar");
+        closeToast();
+      }
+    });
+
     function sharing(img) {
       if (navigator.share){
         navigator.share({
@@ -329,11 +388,26 @@ block additional_scripts
                   //Create a DOMString representing the blob and point the link element towards it
                   let url = window.URL.createObjectURL(blob);
                   a.href = url;
-                  a.download = 'MiRecuerdoMIJU.jpg';
+                  a.download = 'MiRecuerdoMIJU.png';
                   //programatically click the link to trigger the download
                   a.click();
                   //release the reference to the file by revoking the Object URL
                   window.URL.revokeObjectURL(url);
               }
           };
+    }
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+              $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+              $('#imagePreview').hide();
+              $('#imagePreview').fadeIn(650);
+          }
+          reader.readAsDataURL(input.files[0]);
       }
+    }
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
